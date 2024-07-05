@@ -194,7 +194,7 @@ dt <- npp.data %>%
 
 This dataset "dt" is used for the simulation in the FOROM model with only minor adjustments. After the model was run, the output is again processed in R!
 
-**FOROM data**
+## FOROM data
 
 GAMS need to be installed on your computer in order to convert the .gdx-file in a readable R table. You can download it here: <https://www.gams.com/download/>
 
@@ -244,8 +244,6 @@ price_df$Scenario <- ifelse(grepl("^[[:lower:]a-z]",price_df$Scenario),paste0("M
 price_df <- price_df %>%
   filter(Year %in% c("2020","2050", "2070"))  %>%
   separate(Scenario, into = c("DGVM", "GCM", "RCP"), sep = "_") #%>%
-  #filter(GCM !="baseline") #eventually this needs to be dropped
-  #filter(Region =="WORLD")
 
 ```
 
@@ -288,8 +286,6 @@ quantity_df$Scenario <- ifelse(grepl("^[[:lower:]a-z]",quantity_df$Scenario),pas
 quantity_df <- quantity_df %>%
   filter(Year %in% c("2020", "2050","2070"))  %>%
   separate(Scenario, into = c("DGVM", "GCM", "RCP"), sep = "_") #%>%
-  #filter(GCM !="baseline") #%>%
-  #filter(Region =="WORLD")
 
 ```
 
@@ -313,7 +309,6 @@ percentage_changes_quantity$percentage2070 <- (percentage_changes_quantity$Avera
 
 ```
 
-*Question1: Where are unrealisitc high/low values that need to be excluded??*
 
 **Merge the data by continent!**
 
@@ -378,7 +373,7 @@ region_to_rcode <- c(
 
 ```
 
-Mean Values by Continent! *Question 2: Do we take the mean of the percentage changes or calculate the sum of NPP for the continent in 2020 and 2070 and calculate the percentage from there?*
+
 
 ```{r}
 continent_price <- percentage_changes_price %>% 

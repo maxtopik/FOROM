@@ -519,7 +519,9 @@ dt &lt;- npp.data %&gt;%
 <p>This dataset “dt” is used for the simulation in the FOROM model with
 only minor adjustments. After the model was run, the output is again
 processed in R!</p>
-<p><strong>FOROM data</strong></p>
+</div>
+<div id="forom-data" class="section level2">
+<h2>FOROM data</h2>
 <p>GAMS need to be installed on your computer in order to convert the
 .gdx-file in a readable R table. You can download it here: <a href="https://www.gams.com/download/" class="uri">https://www.gams.com/download/</a></p>
 <p>Loading necessary packages:</p>
@@ -554,9 +556,7 @@ price_df$Scenario &lt;- ifelse(grepl(&quot;^[[:lower:]a-z]&quot;,price_df$Scenar
 <p>2.) filter the dataframe!</p>
 <pre class="r"><code>price_df &lt;- price_df %&gt;%
   filter(Year %in% c(&quot;2020&quot;,&quot;2050&quot;, &quot;2070&quot;))  %&gt;%
-  separate(Scenario, into = c(&quot;DGVM&quot;, &quot;GCM&quot;, &quot;RCP&quot;), sep = &quot;_&quot;) #%&gt;%
-  #filter(GCM !=&quot;baseline&quot;) #eventually this needs to be dropped
-  #filter(Region ==&quot;WORLD&quot;)</code></pre>
+  separate(Scenario, into = c(&quot;DGVM&quot;, &quot;GCM&quot;, &quot;RCP&quot;), sep = &quot;_&quot;) #%&gt;%</code></pre>
 <p>3.) take the mean over GCMs and calculate the percentage change</p>
 <pre class="r"><code>##Summarize for mean and SD over GCMs 
 percentage_changes_price &lt;- price_df %&gt;%
@@ -582,9 +582,7 @@ quantity_df$Scenario &lt;- ifelse(grepl(&quot;^[[:lower:]a-z]&quot;,quantity_df$
 <p>2.) filter the dataframe!</p>
 <pre class="r"><code>quantity_df &lt;- quantity_df %&gt;%
   filter(Year %in% c(&quot;2020&quot;, &quot;2050&quot;,&quot;2070&quot;))  %&gt;%
-  separate(Scenario, into = c(&quot;DGVM&quot;, &quot;GCM&quot;, &quot;RCP&quot;), sep = &quot;_&quot;) #%&gt;%
-  #filter(GCM !=&quot;baseline&quot;) #%&gt;%
-  #filter(Region ==&quot;WORLD&quot;)</code></pre>
+  separate(Scenario, into = c(&quot;DGVM&quot;, &quot;GCM&quot;, &quot;RCP&quot;), sep = &quot;_&quot;) #%&gt;%</code></pre>
 <p>3.) take the mean over the GCMs and calculate the percentage
 change</p>
 <pre class="r"><code>percentage_changes_quantity &lt;- quantity_df %&gt;%
@@ -600,8 +598,6 @@ percentage_changes_quantity &lt;- percentage_changes_quantity %&gt;%
 
 #calculate percentage
 percentage_changes_quantity$percentage2070 &lt;- (percentage_changes_quantity$AverageValue_2070-percentage_changes_quantity$AverageValue_2020)/percentage_changes_quantity$AverageValue_2020*100</code></pre>
-<p><em>Question1: Where are unrealisitc high/low values that need to be
-excluded??</em></p>
 <p><strong>Merge the data by continent!</strong></p>
 <pre class="r"><code>region_to_rcode &lt;- c(
   &quot;Australia&quot; = &quot;Oceania&quot;,
@@ -660,9 +656,6 @@ excluded??</em></p>
 
   percentage_changes_price$continent &lt;- region_to_rcode[as.character(percentage_changes_price$Region)]
   percentage_changes_quantity$continent &lt;- region_to_rcode[as.character(percentage_changes_quantity$Region)]</code></pre>
-<p>Mean Values by Continent! <em>Question 2: Do we take the mean of the
-percentage changes or calculate the sum of NPP for the continent in 2020
-and 2070 and calculate the percentage from there?</em></p>
 <pre class="r"><code>continent_price &lt;- percentage_changes_price %&gt;% 
   group_by(SSP, Product,DGVM,RCP, continent) %&gt;% 
   summarize(sum2020 = sum(AverageValue_2020, na.rm = TRUE),
