@@ -1,0 +1,1351 @@
+Feature,Importance,Region,Model
+Value_Area,0.6393112314963878,Australia,Random Forest
+NPP,0.14383464192681392,Australia,Random Forest
+Price,0.08517398696220085,Australia,Random Forest
+Year,0.036868352766313506,Australia,Random Forest
+Quantity,0.03442672355849744,Australia,Random Forest
+GDPP,0.026943327632969825,Australia,Random Forest
+Growth_rate,0.02669396836518468,Australia,Random Forest
+GDP_Level,0.0037533239072486003,Australia,Random Forest
+POP_Level,0.0029944433843833796,Australia,Random Forest
+Value_Area,0.4458998211631323,Australia,Gradient Boosting
+Year,0.2521308827040828,Australia,Gradient Boosting
+NPP,0.154435862605059,Australia,Gradient Boosting
+Price,0.059621789947551226,Australia,Gradient Boosting
+Growth_rate,0.05618434808907632,Australia,Gradient Boosting
+GDPP,0.018201854269043333,Australia,Gradient Boosting
+Quantity,0.011797847147986443,Australia,Gradient Boosting
+GDP_Level,0.0016811351010707055,Australia,Gradient Boosting
+POP_Level,4.645897299791183e-05,Australia,Gradient Boosting
+Value_Area,1.5191824839444716,Australia,Permutation
+Price,0.43198671497022234,Australia,Permutation
+NPP,0.19042175919931276,Australia,Permutation
+Quantity,0.09304539783549293,Australia,Permutation
+Growth_rate,0.047310231879239814,Australia,Permutation
+Year,0.03836258460332752,Australia,Permutation
+GDPP,0.021771476633980224,Australia,Permutation
+GDP_Level,0.0032225602628953133,Australia,Permutation
+POP_Level,0.002730681679571678,Australia,Permutation
+NPP,0.5870694582988314,New Zealand,Random Forest
+Value_Area,0.11781546626739967,New Zealand,Random Forest
+Price,0.10614213449464194,New Zealand,Random Forest
+Year,0.10369823977227843,New Zealand,Random Forest
+Quantity,0.04198319960418375,New Zealand,Random Forest
+POP_Level,0.018748676863127332,New Zealand,Random Forest
+Growth_rate,0.011829734491818926,New Zealand,Random Forest
+GDPP,0.008962781822215472,New Zealand,Random Forest
+GDP_Level,0.0037503083855030548,New Zealand,Random Forest
+NPP,0.6248700322124676,New Zealand,Gradient Boosting
+Price,0.12114848304038772,New Zealand,Gradient Boosting
+Year,0.11560562572780692,New Zealand,Gradient Boosting
+Value_Area,0.08695658779184942,New Zealand,Gradient Boosting
+POP_Level,0.021296133516591282,New Zealand,Gradient Boosting
+Quantity,0.019461804629603577,New Zealand,Gradient Boosting
+Growth_rate,0.006171144398360783,New Zealand,Gradient Boosting
+GDPP,0.004077315727091179,New Zealand,Gradient Boosting
+GDP_Level,0.00041287295584153656,New Zealand,Gradient Boosting
+NPP,1.2903566380462166,New Zealand,Permutation
+Price,0.33289628612916866,New Zealand,Permutation
+Year,0.27445379252370583,New Zealand,Permutation
+Value_Area,0.1481023196147077,New Zealand,Permutation
+Quantity,0.052892163164473115,New Zealand,Permutation
+POP_Level,0.013229160939111907,New Zealand,Permutation
+Growth_rate,0.008743247079164374,New Zealand,Permutation
+GDPP,0.00823658123340244,New Zealand,Permutation
+GDP_Level,0.0032383888292022876,New Zealand,Permutation
+Year,0.9031521184682085,Rest of Oceania,Random Forest
+NPP,0.05355883331137058,Rest of Oceania,Random Forest
+Value_Area,0.017640137754670354,Rest of Oceania,Random Forest
+GDP_Level,0.015694867844387766,Rest of Oceania,Random Forest
+Quantity,0.0047839791519919605,Rest of Oceania,Random Forest
+Price,0.0032179843714380475,Rest of Oceania,Random Forest
+POP_Level,0.0009079906392749099,Rest of Oceania,Random Forest
+GDPP,0.0005801402293276501,Rest of Oceania,Random Forest
+Growth_rate,0.0004639482293303494,Rest of Oceania,Random Forest
+Year,0.7387335018247689,Rest of Oceania,Gradient Boosting
+Value_Area,0.19551853350070558,Rest of Oceania,Gradient Boosting
+NPP,0.05097413673737294,Rest of Oceania,Gradient Boosting
+GDP_Level,0.012735680604360951,Rest of Oceania,Gradient Boosting
+GDPP,0.00046731198276705343,Rest of Oceania,Gradient Boosting
+POP_Level,0.0004379130717205791,Rest of Oceania,Gradient Boosting
+Growth_rate,0.0004336521922740681,Rest of Oceania,Gradient Boosting
+Quantity,0.00040843456475680003,Rest of Oceania,Gradient Boosting
+Price,0.00029083552127323343,Rest of Oceania,Gradient Boosting
+Year,1.3325411246483487,Rest of Oceania,Permutation
+NPP,0.09653181477352762,Rest of Oceania,Permutation
+Value_Area,0.014529977775511549,Rest of Oceania,Permutation
+GDP_Level,0.0064864194721136696,Rest of Oceania,Permutation
+Quantity,0.0062928782779370415,Rest of Oceania,Permutation
+Price,0.003094930118096517,Rest of Oceania,Permutation
+POP_Level,0.00037473749639660436,Rest of Oceania,Permutation
+GDPP,0.0002371531169511498,Rest of Oceania,Permutation
+Growth_rate,0.00019832471738907566,Rest of Oceania,Permutation
+GDPP,0.3732386161165415,Brazil,Random Forest
+NPP,0.26508583955752313,Brazil,Random Forest
+GDP_Level,0.18458540971528178,Brazil,Random Forest
+Year,0.060127637886951746,Brazil,Random Forest
+Price,0.04399349080542305,Brazil,Random Forest
+Value_Area,0.033397224809150715,Brazil,Random Forest
+Quantity,0.025865409600110006,Brazil,Random Forest
+POP_Level,0.009598105823140086,Brazil,Random Forest
+Growth_rate,0.004108265685877849,Brazil,Random Forest
+GDPP,0.28390839179912397,Brazil,Gradient Boosting
+NPP,0.2646008478067552,Brazil,Gradient Boosting
+GDP_Level,0.2345926889503371,Brazil,Gradient Boosting
+Year,0.12545387100233563,Brazil,Gradient Boosting
+POP_Level,0.044226341647365754,Brazil,Gradient Boosting
+Price,0.019530552804624252,Brazil,Gradient Boosting
+Value_Area,0.01919618993037882,Brazil,Gradient Boosting
+Quantity,0.004964988333017441,Brazil,Gradient Boosting
+Growth_rate,0.003526127726061807,Brazil,Gradient Boosting
+NPP,0.38501559514862727,Brazil,Permutation
+GDPP,0.2100892055632785,Brazil,Permutation
+Year,0.17304124902628776,Brazil,Permutation
+GDP_Level,0.14680171723197524,Brazil,Permutation
+Price,0.12120654102160397,Brazil,Permutation
+Quantity,0.05346059886315267,Brazil,Permutation
+Value_Area,0.044117316660305994,Brazil,Permutation
+POP_Level,0.009056980596671382,Brazil,Permutation
+Growth_rate,0.005547619477272015,Brazil,Permutation
+Year,0.6028028989187466,Chile,Random Forest
+Value_Area,0.28526424756446633,Chile,Random Forest
+NPP,0.062423060158417,Chile,Random Forest
+Quantity,0.017526137547079258,Chile,Random Forest
+Growth_rate,0.012262886912473752,Chile,Random Forest
+Price,0.007458510440154101,Chile,Random Forest
+GDPP,0.004408754959988401,Chile,Random Forest
+GDP_Level,0.0043754575321740576,Chile,Random Forest
+POP_Level,0.0034780459665006334,Chile,Random Forest
+Year,0.48415533557606993,Chile,Gradient Boosting
+Value_Area,0.42694078091452325,Chile,Gradient Boosting
+NPP,0.06860454610975815,Chile,Gradient Boosting
+Quantity,0.005588908626537002,Chile,Gradient Boosting
+Price,0.004906110387697762,Chile,Gradient Boosting
+POP_Level,0.004855686240373895,Chile,Gradient Boosting
+GDP_Level,0.0033719662845836836,Chile,Gradient Boosting
+GDPP,0.0013972110068916175,Chile,Gradient Boosting
+Growth_rate,0.00017945485356471287,Chile,Gradient Boosting
+Value_Area,0.5758203173886278,Chile,Permutation
+Year,0.37672992370219316,Chile,Permutation
+NPP,0.0846202043202734,Chile,Permutation
+Quantity,0.04250976057366013,Chile,Permutation
+Price,0.01888545590693701,Chile,Permutation
+Growth_rate,0.014184331267565142,Chile,Permutation
+GDPP,0.0021529066760589744,Chile,Permutation
+GDP_Level,0.002004310772209672,Chile,Permutation
+POP_Level,0.001111022304015674,Chile,Permutation
+Value_Area,0.5529963920630044,Rest of South America,Random Forest
+POP_Level,0.16048456385961063,Rest of South America,Random Forest
+NPP,0.10765106074212868,Rest of South America,Random Forest
+Growth_rate,0.05956188954193209,Rest of South America,Random Forest
+GDPP,0.030332659645973207,Rest of South America,Random Forest
+Quantity,0.02990062318433394,Rest of South America,Random Forest
+GDP_Level,0.026847639376625522,Rest of South America,Random Forest
+Price,0.019741174682188188,Rest of South America,Random Forest
+Year,0.012483996904203445,Rest of South America,Random Forest
+Value_Area,0.43252973950640855,Rest of South America,Gradient Boosting
+POP_Level,0.29833348104782564,Rest of South America,Gradient Boosting
+NPP,0.1099553492141279,Rest of South America,Gradient Boosting
+Growth_rate,0.07295809143208282,Rest of South America,Gradient Boosting
+GDPP,0.04930300230183679,Rest of South America,Gradient Boosting
+GDP_Level,0.02165541770932607,Rest of South America,Gradient Boosting
+Year,0.005798690474446521,Rest of South America,Gradient Boosting
+Price,0.004913650591843914,Rest of South America,Gradient Boosting
+Quantity,0.004552577722101722,Rest of South America,Gradient Boosting
+Value_Area,0.7482914999344168,Rest of South America,Permutation
+NPP,0.15558380059364385,Rest of South America,Permutation
+POP_Level,0.1311422636951513,Rest of South America,Permutation
+Quantity,0.08621042993442658,Rest of South America,Permutation
+Growth_rate,0.04996423141778278,Rest of South America,Permutation
+Price,0.047005311022331284,Rest of South America,Permutation
+GDPP,0.02551380646589505,Rest of South America,Permutation
+GDP_Level,0.012532175054297056,Rest of South America,Permutation
+Year,0.006496671560494294,Rest of South America,Permutation
+Year,0.9052263152986922,China,Random Forest
+NPP,0.0617676018520947,China,Random Forest
+Price,0.015010616238979825,China,Random Forest
+Quantity,0.0068776236664630066,China,Random Forest
+Value_Area,0.004231786454236201,China,Random Forest
+GDPP,0.003666822550033219,China,Random Forest
+GDP_Level,0.002379060442365223,China,Random Forest
+POP_Level,0.00044267532210876686,China,Random Forest
+Growth_rate,0.00039749817502679436,China,Random Forest
+Year,0.9182835476259689,China,Gradient Boosting
+NPP,0.052748364127655774,China,Gradient Boosting
+Price,0.012334954662156762,China,Gradient Boosting
+Value_Area,0.009034978676078559,China,Gradient Boosting
+Quantity,0.004641590018398342,China,Gradient Boosting
+Growth_rate,0.0020059740635837795,China,Gradient Boosting
+GDP_Level,0.000397813214507059,China,Gradient Boosting
+GDPP,0.00030274821925824034,China,Gradient Boosting
+POP_Level,0.0002500293923926228,China,Gradient Boosting
+Year,1.4100563758697007,China,Permutation
+NPP,0.08873313550148473,China,Permutation
+Price,0.0413532073950212,China,Permutation
+Quantity,0.023714611176097966,China,Permutation
+Value_Area,0.002936960517389675,China,Permutation
+GDPP,0.0012416528173056162,China,Permutation
+GDP_Level,0.0006571268155584509,China,Permutation
+POP_Level,0.0002858351842411233,China,Permutation
+Growth_rate,0.0002189338697177412,China,Permutation
+Value_Area,0.47177461653806546,Finland,Random Forest
+NPP,0.25007199890395954,Finland,Random Forest
+Price,0.09332596756127694,Finland,Random Forest
+Year,0.09125437107870357,Finland,Random Forest
+Quantity,0.08728155003782931,Finland,Random Forest
+GDP_Level,0.0017220214364407674,Finland,Random Forest
+Growth_rate,0.0016392911699118216,Finland,Random Forest
+GDPP,0.0016163570352292784,Finland,Random Forest
+POP_Level,0.001313826238583327,Finland,Random Forest
+Value_Area,0.36511300495559146,Finland,Gradient Boosting
+NPP,0.2475786143891534,Finland,Gradient Boosting
+Year,0.20169800502053123,Finland,Gradient Boosting
+Price,0.10438207489776512,Finland,Gradient Boosting
+Quantity,0.07931640173358961,Finland,Gradient Boosting
+GDPP,0.00097945658804173,Finland,Gradient Boosting
+POP_Level,0.0006775151765599058,Finland,Gradient Boosting
+Growth_rate,0.00013576924083028518,Finland,Gradient Boosting
+GDP_Level,0.00011915799793723847,Finland,Gradient Boosting
+Value_Area,0.8256636104143797,Finland,Permutation
+Price,0.40509029101283367,Finland,Permutation
+Year,0.25958952958559667,Finland,Permutation
+NPP,0.19761900911607638,Finland,Permutation
+Quantity,0.19245100830971248,Finland,Permutation
+GDPP,0.0010304261548357064,Finland,Permutation
+GDP_Level,0.0007340522786974501,Finland,Permutation
+Growth_rate,0.0006803839806416079,Finland,Permutation
+POP_Level,0.00041265673046014806,Finland,Permutation
+Year,0.4473346366416351,France,Random Forest
+Value_Area,0.3211699144190601,France,Random Forest
+NPP,0.18544729558308054,France,Random Forest
+Price,0.02139561828887711,France,Random Forest
+Quantity,0.021333722523132218,France,Random Forest
+GDPP,0.001632226620399595,France,Random Forest
+GDP_Level,0.0007394280147432563,France,Random Forest
+Growth_rate,0.00059739958564361,France,Random Forest
+POP_Level,0.0003497583234285606,France,Random Forest
+Year,0.4117657218888882,France,Gradient Boosting
+Value_Area,0.3696344175515323,France,Gradient Boosting
+NPP,0.16809136484410098,France,Gradient Boosting
+Quantity,0.025516629887670932,France,Gradient Boosting
+Price,0.021517668975435493,France,Gradient Boosting
+GDPP,0.0025224517294809338,France,Gradient Boosting
+GDP_Level,0.0005896129088865541,France,Gradient Boosting
+POP_Level,0.00021428786742295618,France,Gradient Boosting
+Growth_rate,0.000147844346581626,France,Gradient Boosting
+Year,0.5039145836948811,France,Permutation
+Value_Area,0.36306884413515433,France,Permutation
+NPP,0.21701750315771365,France,Permutation
+Quantity,0.06632633895803061,France,Permutation
+Price,0.06338659014243178,France,Permutation
+GDPP,0.000686954851192767,France,Permutation
+GDP_Level,0.0004809116603869956,France,Permutation
+Growth_rate,0.0002446278301616811,France,Permutation
+POP_Level,0.00011620696993638324,France,Permutation
+Value_Area,0.6732237359816359,Germany,Random Forest
+NPP,0.12920465759220567,Germany,Random Forest
+Year,0.10518825494914728,Germany,Random Forest
+Price,0.05082510604954503,Germany,Random Forest
+Quantity,0.03619747563523747,Germany,Random Forest
+POP_Level,0.0016737705364076728,Germany,Random Forest
+Growth_rate,0.0014338294579078763,Germany,Random Forest
+GDPP,0.0014198026982447114,Germany,Random Forest
+GDP_Level,0.0008333670996684724,Germany,Random Forest
+Value_Area,0.639310724293628,Germany,Gradient Boosting
+Year,0.1577014812692638,Germany,Gradient Boosting
+NPP,0.08903376950939935,Germany,Gradient Boosting
+Price,0.06140780976286087,Germany,Gradient Boosting
+Quantity,0.03882890797043924,Germany,Gradient Boosting
+POP_Level,0.00976778030736593,Germany,Gradient Boosting
+GDPP,0.0023422601189097393,Germany,Gradient Boosting
+GDP_Level,0.0009257631270070418,Germany,Gradient Boosting
+Growth_rate,0.0006815036411258821,Germany,Gradient Boosting
+Value_Area,1.2524718810987623,Germany,Permutation
+Price,0.20257039639775137,Germany,Permutation
+Year,0.20084370444377936,Germany,Permutation
+Quantity,0.11274370226101689,Germany,Permutation
+NPP,0.10796500753774074,Germany,Permutation
+POP_Level,0.0016422218190800142,Germany,Permutation
+GDPP,0.001210208344117436,Germany,Permutation
+Growth_rate,0.0009583637473952744,Germany,Permutation
+GDP_Level,0.0005198002555321212,Germany,Permutation
+Value_Area,0.7179643520624432,India,Random Forest
+NPP,0.16716369812597182,India,Random Forest
+Year,0.07579535765552904,India,Random Forest
+Quantity,0.02622571845532949,India,Random Forest
+Price,0.009308528133571217,India,Random Forest
+GDP_Level,0.0010138911695599154,India,Random Forest
+POP_Level,0.0009360447990517407,India,Random Forest
+GDPP,0.0008657384440122162,India,Random Forest
+Growth_rate,0.0007266711545313896,India,Random Forest
+Value_Area,0.6035972132257709,India,Gradient Boosting
+Year,0.21130227460150108,India,Gradient Boosting
+NPP,0.1455277611131687,India,Gradient Boosting
+Quantity,0.02763523488197207,India,Gradient Boosting
+Price,0.007899288984215732,India,Gradient Boosting
+GDPP,0.0020010730099638296,India,Gradient Boosting
+Growth_rate,0.001084832147567258,India,Gradient Boosting
+GDP_Level,0.0005852952781003117,India,Gradient Boosting
+POP_Level,0.000367026757740248,India,Gradient Boosting
+Value_Area,1.0741432699992648,India,Permutation
+NPP,0.16424265432324414,India,Permutation
+Year,0.10534388766132421,India,Permutation
+Quantity,0.08871722393340442,India,Permutation
+Price,0.02651026276382895,India,Permutation
+GDPP,0.0005066725827988172,India,Permutation
+Growth_rate,0.0004185211389463817,India,Permutation
+POP_Level,0.0004068697670943311,India,Permutation
+GDP_Level,0.00033202445036190076,India,Permutation
+GDPP,0.5404466388570224,Indonesia,Random Forest
+NPP,0.2329151619682155,Indonesia,Random Forest
+Year,0.12622166166135612,Indonesia,Random Forest
+Value_Area,0.035911590928361256,Indonesia,Random Forest
+GDP_Level,0.02879045989041285,Indonesia,Random Forest
+Quantity,0.012946312323670335,Indonesia,Random Forest
+Price,0.011076682548086459,Indonesia,Random Forest
+POP_Level,0.006964066025557336,Indonesia,Random Forest
+Growth_rate,0.004727425797317803,Indonesia,Random Forest
+GDPP,0.35403126284542763,Indonesia,Gradient Boosting
+Year,0.3441705456164064,Indonesia,Gradient Boosting
+NPP,0.2148996614575814,Indonesia,Gradient Boosting
+Value_Area,0.04920024045359771,Indonesia,Gradient Boosting
+GDP_Level,0.019827417094425866,Indonesia,Gradient Boosting
+Quantity,0.007553388932091552,Indonesia,Gradient Boosting
+POP_Level,0.007502161459924933,Indonesia,Gradient Boosting
+Price,0.0021910760636760394,Indonesia,Gradient Boosting
+Growth_rate,0.0006242460768684348,Indonesia,Gradient Boosting
+GDPP,0.4712119961380937,Indonesia,Permutation
+NPP,0.3134591834144381,Indonesia,Permutation
+Year,0.1473982070899212,Indonesia,Permutation
+GDP_Level,0.048591503500985955,Indonesia,Permutation
+Value_Area,0.0456860012882526,Indonesia,Permutation
+Price,0.022430166730867264,Indonesia,Permutation
+Quantity,0.014190325988268627,Indonesia,Permutation
+POP_Level,0.006926306999612397,Indonesia,Permutation
+Growth_rate,0.004246579188995914,Indonesia,Permutation
+Year,0.8368575441443334,Japan,Random Forest
+NPP,0.12760212649283983,Japan,Random Forest
+Value_Area,0.021547366046825386,Japan,Random Forest
+Price,0.008597561970627547,Japan,Random Forest
+Quantity,0.00397048852159883,Japan,Random Forest
+GDPP,0.0005096159896663172,Japan,Random Forest
+GDP_Level,0.0005090617944069405,Japan,Random Forest
+POP_Level,0.00021851173981683253,Japan,Random Forest
+Growth_rate,0.00018772329988487083,Japan,Random Forest
+Year,0.8622939519421017,Japan,Gradient Boosting
+NPP,0.0998180155123737,Japan,Gradient Boosting
+Value_Area,0.024351716786402695,Japan,Gradient Boosting
+Quantity,0.006313194764854046,Japan,Gradient Boosting
+Price,0.005200184124948019,Japan,Gradient Boosting
+POP_Level,0.0010110998738439016,Japan,Gradient Boosting
+GDP_Level,0.0008172588932776697,Japan,Gradient Boosting
+Growth_rate,0.00011293618880333895,Japan,Gradient Boosting
+GDPP,8.164191339502055e-05,Japan,Gradient Boosting
+Year,1.295088338779755,Japan,Permutation
+NPP,0.2261393624345665,Japan,Permutation
+Value_Area,0.031739788144609524,Japan,Permutation
+Price,0.02144342933357716,Japan,Permutation
+Quantity,0.0063751738617848445,Japan,Permutation
+GDP_Level,0.00019164085196183845,Japan,Permutation
+GDPP,0.00016673071363204617,Japan,Permutation
+POP_Level,6.939088362123425e-05,Japan,Permutation
+Growth_rate,5.593847868057278e-05,Japan,Permutation
+Value_Area,0.5961173705732028,Poland,Random Forest
+NPP,0.2238518319561157,Poland,Random Forest
+Year,0.0780417481649076,Poland,Random Forest
+Quantity,0.05701547663083096,Poland,Random Forest
+Price,0.035095309853345524,Poland,Random Forest
+GDPP,0.005240324660405731,Poland,Random Forest
+Growth_rate,0.0018624994576640285,Poland,Random Forest
+GDP_Level,0.001520642732242275,Poland,Random Forest
+POP_Level,0.001254795971285367,Poland,Random Forest
+Value_Area,0.4884154563351689,Poland,Gradient Boosting
+NPP,0.18715517795934572,Poland,Gradient Boosting
+Year,0.16302881973035543,Poland,Gradient Boosting
+Quantity,0.07455855048058936,Poland,Gradient Boosting
+Price,0.051886115468452836,Poland,Gradient Boosting
+GDPP,0.02724953873106774,Poland,Gradient Boosting
+POP_Level,0.004671074747299535,Poland,Gradient Boosting
+GDP_Level,0.0021696778221447495,Poland,Gradient Boosting
+Growth_rate,0.0008655887255756343,Poland,Gradient Boosting
+Value_Area,0.8830127896195936,Poland,Permutation
+NPP,0.27848380749266877,Poland,Permutation
+Quantity,0.23917683014099572,Poland,Permutation
+Year,0.19138306973165972,Poland,Permutation
+Price,0.08354813465746332,Poland,Permutation
+GDPP,0.004676000686086678,Poland,Permutation
+Growth_rate,0.0013377995600503568,Poland,Permutation
+GDP_Level,0.0009719239565458393,Poland,Permutation
+POP_Level,0.0006172785828689187,Poland,Permutation
+Year,0.7039525945708068,Russian Federation,Random Forest
+NPP,0.19525097719304013,Russian Federation,Random Forest
+Value_Area,0.048884823710768015,Russian Federation,Random Forest
+Growth_rate,0.016519619003450135,Russian Federation,Random Forest
+Price,0.010798723538881522,Russian Federation,Random Forest
+Quantity,0.0100273081159514,Russian Federation,Random Forest
+GDP_Level,0.006551812750446331,Russian Federation,Random Forest
+GDPP,0.005844161267147422,Russian Federation,Random Forest
+POP_Level,0.0021699798495080818,Russian Federation,Random Forest
+Year,0.6566127841150414,Russian Federation,Gradient Boosting
+NPP,0.18822917945141143,Russian Federation,Gradient Boosting
+Growth_rate,0.0791845969174822,Russian Federation,Gradient Boosting
+Value_Area,0.05288147939912316,Russian Federation,Gradient Boosting
+GDPP,0.006449866511025888,Russian Federation,Gradient Boosting
+Price,0.006059460445196729,Russian Federation,Gradient Boosting
+Quantity,0.005518266480779273,Russian Federation,Gradient Boosting
+GDP_Level,0.003535188663173766,Russian Federation,Gradient Boosting
+POP_Level,0.0015291780167661978,Russian Federation,Gradient Boosting
+Year,1.1500369701846707,Russian Federation,Permutation
+NPP,0.4144456600804213,Russian Federation,Permutation
+Value_Area,0.04182960261613748,Russian Federation,Permutation
+Price,0.017748093016557043,Russian Federation,Permutation
+Quantity,0.01651156504431924,Russian Federation,Permutation
+Growth_rate,0.006980230734255133,Russian Federation,Permutation
+GDPP,0.004352480105289202,Russian Federation,Permutation
+GDP_Level,0.004310684717619129,Russian Federation,Permutation
+POP_Level,0.0017062365992637995,Russian Federation,Permutation
+Year,0.6166518459469073,Sweden,Random Forest
+NPP,0.22341692178010936,Sweden,Random Forest
+Value_Area,0.09193471212352328,Sweden,Random Forest
+Price,0.042311849847748974,Sweden,Random Forest
+Quantity,0.022020816558530876,Sweden,Random Forest
+GDP_Level,0.0010519743653840997,Sweden,Random Forest
+Growth_rate,0.0009773513142194588,Sweden,Random Forest
+GDPP,0.0008855838449196977,Sweden,Random Forest
+POP_Level,0.0007489442186570598,Sweden,Random Forest
+Year,0.5280748532299152,Sweden,Gradient Boosting
+Value_Area,0.1980134176151611,Sweden,Gradient Boosting
+NPP,0.1807534262992958,Sweden,Gradient Boosting
+Price,0.07429514288089083,Sweden,Gradient Boosting
+Quantity,0.016569580978484957,Sweden,Gradient Boosting
+Growth_rate,0.0011028193169529009,Sweden,Gradient Boosting
+POP_Level,0.0007551973523858546,Sweden,Gradient Boosting
+GDP_Level,0.00023483288822965056,Sweden,Gradient Boosting
+GDPP,0.00020072943868368096,Sweden,Gradient Boosting
+Year,0.6508849665709737,Sweden,Permutation
+Value_Area,0.35450594876736974,Sweden,Permutation
+NPP,0.20950308656510871,Sweden,Permutation
+Price,0.14954606983039104,Sweden,Permutation
+Quantity,0.053738749144200126,Sweden,Permutation
+Growth_rate,0.0006853633796839121,Sweden,Permutation
+GDPP,0.0004100712208329971,Sweden,Permutation
+GDP_Level,0.0003964930269635403,Sweden,Permutation
+POP_Level,0.00028815797867156603,Sweden,Permutation
+Year,0.5360324060510469,Rest of Africa,Random Forest
+NPP,0.288998792899647,Rest of Africa,Random Forest
+GDP_Level,0.08474268958821254,Rest of Africa,Random Forest
+Value_Area,0.05953808162520361,Rest of Africa,Random Forest
+Price,0.013432877347299896,Rest of Africa,Random Forest
+Quantity,0.012922060036938217,Rest of Africa,Random Forest
+POP_Level,0.001823399518150262,Rest of Africa,Random Forest
+Growth_rate,0.001378131424058893,Rest of Africa,Random Forest
+GDPP,0.0011315615094428457,Rest of Africa,Random Forest
+Year,0.4162557711437059,Rest of Africa,Gradient Boosting
+NPP,0.3043242649051475,Rest of Africa,Gradient Boosting
+GDP_Level,0.23946710132275575,Rest of Africa,Gradient Boosting
+Value_Area,0.027861223836104253,Rest of Africa,Gradient Boosting
+Quantity,0.006418535386750172,Rest of Africa,Gradient Boosting
+Price,0.003497297453864184,Rest of Africa,Gradient Boosting
+GDPP,0.0015331686181971815,Rest of Africa,Gradient Boosting
+POP_Level,0.0006358149709328464,Rest of Africa,Gradient Boosting
+Growth_rate,6.822362542086347e-06,Rest of Africa,Gradient Boosting
+Year,0.6512903075032502,Rest of Africa,Permutation
+NPP,0.3969725979305204,Rest of Africa,Permutation
+GDP_Level,0.11722644803848867,Rest of Africa,Permutation
+Value_Area,0.0887207812436018,Rest of Africa,Permutation
+Price,0.052530451081493165,Rest of Africa,Permutation
+Quantity,0.022288376914621866,Rest of Africa,Permutation
+POP_Level,0.001690097618559383,Rest of Africa,Permutation
+Growth_rate,0.000907351902667508,Rest of Africa,Permutation
+GDPP,0.0005253452410327597,Rest of Africa,Permutation
+Value_Area,0.7647578850152846,Rest of Asia,Random Forest
+NPP,0.13149697632644405,Rest of Asia,Random Forest
+Year,0.08524522272572739,Rest of Asia,Random Forest
+Price,0.007301025461639007,Rest of Asia,Random Forest
+Quantity,0.007192296659837926,Rest of Asia,Random Forest
+POP_Level,0.0016598924847726427,Rest of Asia,Random Forest
+Growth_rate,0.0012100503771292005,Rest of Asia,Random Forest
+GDP_Level,0.000603906912011741,Rest of Asia,Random Forest
+GDPP,0.0005327440371535567,Rest of Asia,Random Forest
+Year,0.44519073898176403,Rest of Asia,Gradient Boosting
+Value_Area,0.4111176048124632,Rest of Asia,Gradient Boosting
+NPP,0.12489368936959869,Rest of Asia,Gradient Boosting
+Quantity,0.006575008195226332,Rest of Asia,Gradient Boosting
+Price,0.004344609534329005,Rest of Asia,Gradient Boosting
+Growth_rate,0.0037613054836282017,Rest of Asia,Gradient Boosting
+POP_Level,0.0028675603755578625,Rest of Asia,Gradient Boosting
+GDP_Level,0.0007641353757540106,Rest of Asia,Gradient Boosting
+GDPP,0.000485347871678727,Rest of Asia,Gradient Boosting
+Value_Area,0.9297191147351118,Rest of Asia,Permutation
+Year,0.24457829794604802,Rest of Asia,Permutation
+NPP,0.23001366612404245,Rest of Asia,Permutation
+Quantity,0.023499466566666162,Rest of Asia,Permutation
+Price,0.02006588231900417,Rest of Asia,Permutation
+POP_Level,0.0014945094484749455,Rest of Asia,Permutation
+Growth_rate,0.0012620657735706974,Rest of Asia,Permutation
+GDP_Level,0.0004189984080780418,Rest of Asia,Permutation
+GDPP,0.0004069303221963305,Rest of Asia,Permutation
+Year,0.6367014599611486,Rest of Europe,Random Forest
+Value_Area,0.21193691399657524,Rest of Europe,Random Forest
+NPP,0.11439012426344755,Rest of Europe,Random Forest
+Quantity,0.017852427754510486,Rest of Europe,Random Forest
+Price,0.01628495028484809,Rest of Europe,Random Forest
+GDPP,0.000856195910227972,Rest of Europe,Random Forest
+Growth_rate,0.0007709489190865219,Rest of Europe,Random Forest
+POP_Level,0.0006766213962608251,Rest of Europe,Random Forest
+GDP_Level,0.0005303575138948756,Rest of Europe,Random Forest
+Year,0.5468197354915688,Rest of Europe,Gradient Boosting
+Value_Area,0.32503491071919627,Rest of Europe,Gradient Boosting
+NPP,0.09387914362976102,Rest of Europe,Gradient Boosting
+Quantity,0.017046190342732852,Rest of Europe,Gradient Boosting
+Price,0.012674242908273623,Rest of Europe,Gradient Boosting
+GDPP,0.003663199352823878,Rest of Europe,Gradient Boosting
+GDP_Level,0.0007494819431020999,Rest of Europe,Gradient Boosting
+POP_Level,0.00013309561254138912,Rest of Europe,Gradient Boosting
+Growth_rate,0.0,Rest of Europe,Gradient Boosting
+Year,0.7284261913792769,Rest of Europe,Permutation
+Value_Area,0.34153688981153735,Rest of Europe,Permutation
+NPP,0.1479100986078351,Rest of Europe,Permutation
+Quantity,0.04177100645887596,Rest of Europe,Permutation
+Price,0.04119356695659661,Rest of Europe,Permutation
+GDPP,0.0005685320526650939,Rest of Europe,Permutation
+Growth_rate,0.0005229003781144992,Rest of Europe,Permutation
+POP_Level,0.0004062912298129828,Rest of Europe,Permutation
+GDP_Level,0.00027534214969481273,Rest of Europe,Permutation
+Year,0.7357459196837521,Rest of Central America,Random Forest
+NPP,0.18912694662631438,Rest of Central America,Random Forest
+Value_Area,0.02936131540105447,Rest of Central America,Random Forest
+Quantity,0.01695520093688106,Rest of Central America,Random Forest
+Price,0.013977770766472483,Rest of Central America,Random Forest
+GDP_Level,0.010808390153215405,Rest of Central America,Random Forest
+Growth_rate,0.0016938272233063506,Rest of Central America,Random Forest
+POP_Level,0.0013009310745666209,Rest of Central America,Random Forest
+GDPP,0.0010296981344370384,Rest of Central America,Random Forest
+Year,0.7316327320702943,Rest of Central America,Gradient Boosting
+NPP,0.15868409429925756,Rest of Central America,Gradient Boosting
+GDP_Level,0.05270898587193257,Rest of Central America,Gradient Boosting
+Value_Area,0.03801579007084255,Rest of Central America,Gradient Boosting
+Quantity,0.011161799423076277,Rest of Central America,Gradient Boosting
+Price,0.005900919473190949,Rest of Central America,Gradient Boosting
+POP_Level,0.0014439781033493617,Rest of Central America,Gradient Boosting
+Growth_rate,0.00023008180491940978,Rest of Central America,Gradient Boosting
+GDPP,0.00022161888313701342,Rest of Central America,Gradient Boosting
+Year,1.1954818206943247,Rest of Central America,Permutation
+NPP,0.2716816747535674,Rest of Central America,Permutation
+Value_Area,0.09527304005192777,Rest of Central America,Permutation
+Price,0.0450625068601886,Rest of Central America,Permutation
+Quantity,0.04211162135288839,Rest of Central America,Permutation
+GDP_Level,0.008085380391756236,Rest of Central America,Permutation
+Growth_rate,0.001608492064303657,Rest of Central America,Permutation
+GDPP,0.0014610883542245934,Rest of Central America,Permutation
+POP_Level,0.0011898852888873935,Rest of Central America,Permutation
+NPP,0.5958527467606437,Canada,Random Forest
+Year,0.2013428565148741,Canada,Random Forest
+Price,0.07682185515372043,Canada,Random Forest
+Quantity,0.03609722109785539,Canada,Random Forest
+GDPP,0.034787321953658905,Canada,Random Forest
+Value_Area,0.032806246106022084,Canada,Random Forest
+Growth_rate,0.01066587990337375,Canada,Random Forest
+GDP_Level,0.005828334876537375,Canada,Random Forest
+POP_Level,0.0057975376333142935,Canada,Random Forest
+NPP,0.6625599616353105,Canada,Gradient Boosting
+Year,0.2067051697236859,Canada,Gradient Boosting
+Price,0.0673540081832463,Canada,Gradient Boosting
+Quantity,0.023024633900362274,Canada,Gradient Boosting
+GDPP,0.020350557343466472,Canada,Gradient Boosting
+Growth_rate,0.0088592043063511,Canada,Gradient Boosting
+Value_Area,0.0051593004942968815,Canada,Gradient Boosting
+GDP_Level,0.003026532807189412,Canada,Gradient Boosting
+POP_Level,0.0029606316060911573,Canada,Gradient Boosting
+NPP,0.9037379951117976,Canada,Permutation
+Year,0.5490187457514335,Canada,Permutation
+Price,0.3020957944996494,Canada,Permutation
+GDPP,0.07898825937304568,Canada,Permutation
+Quantity,0.0765068188538914,Canada,Permutation
+Value_Area,0.04614165975745037,Canada,Permutation
+Growth_rate,0.01202447906004891,Canada,Permutation
+GDP_Level,0.004871032183672475,Canada,Permutation
+POP_Level,0.003601382736117964,Canada,Permutation
+Year,0.6285144488239726,Mexico,Random Forest
+NPP,0.2853925147042565,Mexico,Random Forest
+Quantity,0.022383858356286597,Mexico,Random Forest
+GDP_Level,0.022054681044215714,Mexico,Random Forest
+Price,0.021093312054119493,Mexico,Random Forest
+Value_Area,0.01719269181968903,Mexico,Random Forest
+Growth_rate,0.0016340852254892165,Mexico,Random Forest
+POP_Level,0.0011160576554633465,Mexico,Random Forest
+GDPP,0.0006183503165074543,Mexico,Random Forest
+Year,0.6620355735352343,Mexico,Gradient Boosting
+NPP,0.25797330033924054,Mexico,Gradient Boosting
+GDP_Level,0.033776910121697826,Mexico,Gradient Boosting
+Quantity,0.020690364572113193,Mexico,Gradient Boosting
+Price,0.015625538164676205,Mexico,Gradient Boosting
+Value_Area,0.008677236348040731,Mexico,Gradient Boosting
+GDPP,0.0009450409074355179,Mexico,Gradient Boosting
+POP_Level,0.00019004012174730624,Mexico,Gradient Boosting
+Growth_rate,8.599588981439089e-05,Mexico,Gradient Boosting
+Year,1.292336368168196,Mexico,Permutation
+NPP,0.4437573630720193,Mexico,Permutation
+Quantity,0.07396747476831533,Mexico,Permutation
+Price,0.06686386068514383,Mexico,Permutation
+Value_Area,0.025887603868934593,Mexico,Permutation
+GDP_Level,0.016506911951068858,Mexico,Permutation
+Growth_rate,0.0013774756779844743,Mexico,Permutation
+POP_Level,0.0006631029960643464,Mexico,Permutation
+GDPP,0.000494874965444736,Mexico,Permutation
+Year,0.8017066822717487,Pacific Coast,Random Forest
+NPP,0.13412496479292388,Pacific Coast,Random Forest
+Value_Area,0.0481513258896165,Pacific Coast,Random Forest
+Price,0.008288390245252427,Pacific Coast,Random Forest
+Quantity,0.006722552871566345,Pacific Coast,Random Forest
+Growth_rate,0.00037079342293799556,Pacific Coast,Random Forest
+GDPP,0.00023892047579215106,Pacific Coast,Random Forest
+POP_Level,0.00020009087589524947,Pacific Coast,Random Forest
+GDP_Level,0.00019627915426677315,Pacific Coast,Random Forest
+Year,0.7772279486081632,Pacific Coast,Gradient Boosting
+Value_Area,0.11087005866837106,Pacific Coast,Gradient Boosting
+NPP,0.10441836341810543,Pacific Coast,Gradient Boosting
+Price,0.0038521890257906927,Pacific Coast,Gradient Boosting
+Quantity,0.0032681154626300695,Pacific Coast,Gradient Boosting
+GDPP,0.0002815236390757187,Pacific Coast,Gradient Boosting
+GDP_Level,7.862411302580754e-05,Pacific Coast,Gradient Boosting
+Growth_rate,1.8867812991347065e-06,Pacific Coast,Gradient Boosting
+POP_Level,1.2902835388837482e-06,Pacific Coast,Gradient Boosting
+Year,1.3571967936048612,Pacific Coast,Permutation
+NPP,0.24567024566110632,Pacific Coast,Permutation
+Value_Area,0.05937255162887477,Pacific Coast,Permutation
+Price,0.01587723254504807,Pacific Coast,Permutation
+Quantity,0.010662071939168193,Pacific Coast,Permutation
+Growth_rate,0.00016084368337497822,Pacific Coast,Permutation
+GDPP,0.0001223898390601441,Pacific Coast,Permutation
+GDP_Level,9.934958144327543e-05,Pacific Coast,Permutation
+POP_Level,7.890510172693377e-05,Pacific Coast,Permutation
+Value_Area,0.6402586856007896,Rocky Mountain,Random Forest
+Year,0.23980233924672945,Rocky Mountain,Random Forest
+NPP,0.10682354959359044,Rocky Mountain,Random Forest
+Quantity,0.006037821778965667,Rocky Mountain,Random Forest
+Price,0.005872476934907221,Rocky Mountain,Random Forest
+Growth_rate,0.0004017988179914054,Rocky Mountain,Random Forest
+GDP_Level,0.0002914497354720582,Rocky Mountain,Random Forest
+GDPP,0.0002674291413651576,Rocky Mountain,Random Forest
+POP_Level,0.00024444915018902093,Rocky Mountain,Random Forest
+Value_Area,0.4898394576274825,Rocky Mountain,Gradient Boosting
+Year,0.40571036467053195,Rocky Mountain,Gradient Boosting
+NPP,0.09134933285723422,Rocky Mountain,Gradient Boosting
+Quantity,0.004915860872452334,Rocky Mountain,Gradient Boosting
+Price,0.004688518473223964,Rocky Mountain,Gradient Boosting
+GDPP,0.002603498902684029,Rocky Mountain,Gradient Boosting
+GDP_Level,0.0004047091567504717,Rocky Mountain,Gradient Boosting
+POP_Level,0.00024917374306019383,Rocky Mountain,Gradient Boosting
+Growth_rate,0.00023908369658040118,Rocky Mountain,Gradient Boosting
+Value_Area,0.7916440889535774,Rocky Mountain,Permutation
+Year,0.33972097752929553,Rocky Mountain,Permutation
+NPP,0.20192837972043529,Rocky Mountain,Permutation
+Quantity,0.0175617232101817,Rocky Mountain,Permutation
+Price,0.01313877375993876,Rocky Mountain,Permutation
+Growth_rate,0.00032137616428743463,Rocky Mountain,Permutation
+GDP_Level,0.00015100081226813167,Rocky Mountain,Permutation
+GDPP,0.00014437039355544857,Rocky Mountain,Permutation
+POP_Level,0.0001290508396504797,Rocky Mountain,Permutation
+Year,0.7002119762128208,North Central,Random Forest
+NPP,0.17673946963744633,North Central,Random Forest
+Value_Area,0.10107756470726267,North Central,Random Forest
+Price,0.010306118316176489,North Central,Random Forest
+Quantity,0.009605649346811082,North Central,Random Forest
+GDPP,0.0010410936593780282,North Central,Random Forest
+Growth_rate,0.0005688378634032241,North Central,Random Forest
+POP_Level,0.0002419347672653159,North Central,Random Forest
+GDP_Level,0.00020735548943607565,North Central,Random Forest
+Year,0.6462174194598528,North Central,Gradient Boosting
+Value_Area,0.20137064867620738,North Central,Gradient Boosting
+NPP,0.13657017840272528,North Central,Gradient Boosting
+Price,0.007376252499539838,North Central,Gradient Boosting
+Quantity,0.005206038963638598,North Central,Gradient Boosting
+GDPP,0.003165808168782506,North Central,Gradient Boosting
+GDP_Level,5.330028214320922e-05,North Central,Gradient Boosting
+POP_Level,3.9344169121809515e-05,North Central,Gradient Boosting
+Growth_rate,1.0093779883848731e-06,North Central,Gradient Boosting
+Year,0.7825336849500754,North Central,Permutation
+NPP,0.3078379436299753,North Central,Permutation
+Value_Area,0.26638550679095196,North Central,Permutation
+Quantity,0.030592629946709648,North Central,Permutation
+Price,0.01957188813072843,North Central,Permutation
+GDPP,0.0006993167925841038,North Central,Permutation
+Growth_rate,0.00036298640836387455,North Central,Permutation
+POP_Level,8.264242259794496e-05,North Central,Permutation
+GDP_Level,7.930551896880855e-05,North Central,Permutation
+Year,0.7997941219404027,North East,Random Forest
+NPP,0.12578662189822204,North East,Random Forest
+Value_Area,0.055437627845878246,North East,Random Forest
+Price,0.01062323389867804,North East,Random Forest
+Quantity,0.006476984534736435,North East,Random Forest
+GDPP,0.0011044742193113638,North East,Random Forest
+POP_Level,0.0002635751267157992,North East,Random Forest
+Growth_rate,0.00026239029149476565,North East,Random Forest
+GDP_Level,0.00025097024456061426,North East,Random Forest
+Year,0.7431900885891073,North East,Gradient Boosting
+Value_Area,0.13969499613712996,North East,Gradient Boosting
+NPP,0.10101710415882706,North East,Gradient Boosting
+Price,0.0066481254104574375,North East,Gradient Boosting
+GDPP,0.0052919989487698925,North East,Gradient Boosting
+Quantity,0.0034877832897452265,North East,Gradient Boosting
+POP_Level,0.0005050790852990155,North East,Gradient Boosting
+Growth_rate,0.00010901757921821335,North East,Gradient Boosting
+GDP_Level,5.5806801445806036e-05,North East,Gradient Boosting
+Year,1.3045686568089117,North East,Permutation
+NPP,0.25507184520812604,North East,Permutation
+Value_Area,0.07735588296203286,North East,Permutation
+Price,0.02186515022147939,North East,Permutation
+Quantity,0.013384664493142817,North East,Permutation
+GDPP,0.0005400055558309802,North East,Permutation
+Growth_rate,0.0001181761793495384,North East,Permutation
+GDP_Level,0.00011811324165401648,North East,Permutation
+POP_Level,0.00011544541709038736,North East,Permutation
+Value_Area,0.35788238254747595,South Central,Random Forest
+NPP,0.2975676962939925,South Central,Random Forest
+Year,0.23189518227417427,South Central,Random Forest
+Price,0.05963401055520775,South Central,Random Forest
+Quantity,0.04393244626844486,South Central,Random Forest
+Growth_rate,0.0029191409398723533,South Central,Random Forest
+GDPP,0.002658829523972507,South Central,Random Forest
+GDP_Level,0.001971150208999916,South Central,Random Forest
+POP_Level,0.0015391613878598684,South Central,Random Forest
+Value_Area,0.3635274333889629,South Central,Gradient Boosting
+Year,0.2916453163215507,South Central,Gradient Boosting
+NPP,0.2325394864147603,South Central,Gradient Boosting
+Price,0.059668924365491406,South Central,Gradient Boosting
+Quantity,0.04622361359885002,South Central,Gradient Boosting
+GDPP,0.005544694523228816,South Central,Gradient Boosting
+GDP_Level,0.0005520664384842095,South Central,Gradient Boosting
+Growth_rate,0.000294989394163205,South Central,Gradient Boosting
+POP_Level,3.4755545084473295e-06,South Central,Gradient Boosting
+Value_Area,0.578995558830801,South Central,Permutation
+NPP,0.49487746113503717,South Central,Permutation
+Year,0.4078636484087278,South Central,Permutation
+Price,0.1606119609507822,South Central,Permutation
+Quantity,0.1343233065151328,South Central,Permutation
+GDPP,0.002253658476438147,South Central,Permutation
+Growth_rate,0.0021391996330900167,South Central,Permutation
+GDP_Level,0.001240843166731842,South Central,Permutation
+POP_Level,0.0008325422720360742,South Central,Permutation
+Year,0.4602359991959784,South East,Random Forest
+NPP,0.32081167412206113,South East,Random Forest
+Value_Area,0.1526962294787843,South East,Random Forest
+Price,0.03543713222036637,South East,Random Forest
+Quantity,0.024629814088197692,South East,Random Forest
+GDPP,0.0023669696739641553,South East,Random Forest
+Growth_rate,0.001730693012619733,South East,Random Forest
+POP_Level,0.0010494708764429263,South East,Random Forest
+GDP_Level,0.0010420173315853073,South East,Random Forest
+Year,0.5127932206471184,South East,Gradient Boosting
+NPP,0.2600154541158589,South East,Gradient Boosting
+Value_Area,0.16749598875575983,South East,Gradient Boosting
+Price,0.031215905605692516,South East,Gradient Boosting
+Quantity,0.024821227047598614,South East,Gradient Boosting
+GDPP,0.0029687216698697713,South East,Gradient Boosting
+GDP_Level,0.0003946000727244814,South East,Gradient Boosting
+POP_Level,0.00029417049691164975,South East,Gradient Boosting
+Growth_rate,7.115884657859863e-07,South East,Gradient Boosting
+Year,0.9076967536498867,South East,Permutation
+NPP,0.5117647297619528,South East,Permutation
+Value_Area,0.11953652712760912,South East,Permutation
+Price,0.09719741506568683,South East,Permutation
+Quantity,0.05927874568227605,South East,Permutation
+GDPP,0.001748486994635401,South East,Permutation
+Growth_rate,0.0008325434445697,South East,Permutation
+GDP_Level,0.0006647047637455495,South East,Permutation
+POP_Level,0.0006111952937632225,South East,Permutation
+POP_Level,0.38185409487711114,Argentina,Random Forest
+NPP,0.2386815114371702,Argentina,Random Forest
+Value_Area,0.09078240633469269,Argentina,Random Forest
+Price,0.08305461358529836,Argentina,Random Forest
+Quantity,0.07580878352525224,Argentina,Random Forest
+Growth_rate,0.0724344620563276,Argentina,Random Forest
+GDPP,0.028433333889053784,Argentina,Random Forest
+GDP_Level,0.02162842463889933,Argentina,Random Forest
+Year,0.007322369656194577,Argentina,Random Forest
+POP_Level,0.39628781171117483,Argentina,Gradient Boosting
+NPP,0.26869950619826805,Argentina,Gradient Boosting
+Growth_rate,0.0911220702175656,Argentina,Gradient Boosting
+Value_Area,0.08134183832979515,Argentina,Gradient Boosting
+GDP_Level,0.04630844234714761,Argentina,Gradient Boosting
+Quantity,0.04392669365877566,Argentina,Gradient Boosting
+Price,0.0359429203750367,Argentina,Gradient Boosting
+GDPP,0.02940020367626642,Argentina,Gradient Boosting
+Year,0.006970513485970006,Argentina,Gradient Boosting
+POP_Level,0.5811093846107825,Argentina,Permutation
+NPP,0.4607716985581227,Argentina,Permutation
+Price,0.32668452221598876,Argentina,Permutation
+Quantity,0.3077476945817451,Argentina,Permutation
+Value_Area,0.20294649994345032,Argentina,Permutation
+Growth_rate,0.10634861252608804,Argentina,Permutation
+GDPP,0.03620325743024647,Argentina,Permutation
+GDP_Level,0.01913827788673056,Argentina,Permutation
+Year,0.007752004496538045,Argentina,Permutation
+Year,0.6315813981571566,Austria,Random Forest
+NPP,0.18613168446824907,Austria,Random Forest
+Value_Area,0.15473445837099792,Austria,Random Forest
+Price,0.01419130615362309,Austria,Random Forest
+Quantity,0.010746476678074875,Austria,Random Forest
+POP_Level,0.0009602741179326855,Austria,Random Forest
+GDPP,0.0006886066321151002,Austria,Random Forest
+Growth_rate,0.000515282785513732,Austria,Random Forest
+GDP_Level,0.00045051263633690187,Austria,Random Forest
+Year,0.5511893424380198,Austria,Gradient Boosting
+Value_Area,0.25683921999207476,Austria,Gradient Boosting
+NPP,0.1565318655187745,Austria,Gradient Boosting
+Price,0.017884042574725142,Austria,Gradient Boosting
+Quantity,0.014877680954718248,Austria,Gradient Boosting
+POP_Level,0.000870710904571293,Austria,Gradient Boosting
+GDPP,0.0008532540632012611,Austria,Gradient Boosting
+GDP_Level,0.0007120443802195201,Austria,Gradient Boosting
+Growth_rate,0.00024183917369543703,Austria,Gradient Boosting
+Year,0.8779346482917555,Austria,Permutation
+NPP,0.2401710470814385,Austria,Permutation
+Value_Area,0.2211681937686248,Austria,Permutation
+Price,0.041605867116097026,Austria,Permutation
+Quantity,0.024390789574170946,Austria,Permutation
+POP_Level,0.0009391349584297548,Austria,Permutation
+GDPP,0.0003733272246827735,Austria,Permutation
+Growth_rate,0.00024290642107233085,Austria,Permutation
+GDP_Level,0.00022098457642332202,Austria,Permutation
+Value_Area,0.6066150956513799,Belarus,Random Forest
+NPP,0.16078440612806053,Belarus,Random Forest
+Quantity,0.12748213270957423,Belarus,Random Forest
+Year,0.04712984560690446,Belarus,Random Forest
+Price,0.042138688567159646,Belarus,Random Forest
+POP_Level,0.004243629762833447,Belarus,Random Forest
+GDPP,0.004013358792273621,Belarus,Random Forest
+GDP_Level,0.00381462374853341,Belarus,Random Forest
+Growth_rate,0.0037782190332807893,Belarus,Random Forest
+Value_Area,0.598745394367471,Belarus,Gradient Boosting
+Quantity,0.19224320521615773,Belarus,Gradient Boosting
+NPP,0.12797958330635117,Belarus,Gradient Boosting
+Price,0.03840145958131734,Belarus,Gradient Boosting
+Year,0.022636306943349532,Belarus,Gradient Boosting
+GDP_Level,0.008063894322453516,Belarus,Gradient Boosting
+GDPP,0.007439565753725483,Belarus,Gradient Boosting
+POP_Level,0.0038046135044168977,Belarus,Gradient Boosting
+Growth_rate,0.0006859770047574652,Belarus,Gradient Boosting
+Value_Area,0.9591288819474961,Belarus,Permutation
+Quantity,0.7941799203923254,Belarus,Permutation
+Price,0.14292466107117247,Belarus,Permutation
+NPP,0.10056164211692047,Belarus,Permutation
+Year,0.09830276405044751,Belarus,Permutation
+GDPP,0.004882873776007868,Belarus,Permutation
+POP_Level,0.004576743924408611,Belarus,Permutation
+Growth_rate,0.004038702223697144,Belarus,Permutation
+GDP_Level,0.003672554580389298,Belarus,Permutation
+NPP,0.5244612106697357,Belgium,Random Forest
+Value_Area,0.19138294543782491,Belgium,Random Forest
+Year,0.127571900395331,Belgium,Random Forest
+Price,0.0849849593436642,Belgium,Random Forest
+Quantity,0.061007951890130495,Belgium,Random Forest
+GDPP,0.003949744513763319,Belgium,Random Forest
+Growth_rate,0.003074200199121243,Belgium,Random Forest
+POP_Level,0.0020037887273719472,Belgium,Random Forest
+GDP_Level,0.0015632988230570197,Belgium,Random Forest
+NPP,0.4855759142308098,Belgium,Gradient Boosting
+Value_Area,0.18230335586437982,Belgium,Gradient Boosting
+Year,0.1395365789616617,Belgium,Gradient Boosting
+Price,0.11015707276015474,Belgium,Gradient Boosting
+Quantity,0.07522977136029746,Belgium,Gradient Boosting
+GDPP,0.004697750156672354,Belgium,Gradient Boosting
+GDP_Level,0.0014967060347206866,Belgium,Gradient Boosting
+Growth_rate,0.0009217084596183047,Belgium,Gradient Boosting
+POP_Level,8.114217168499103e-05,Belgium,Gradient Boosting
+Value_Area,0.6043959808790158,Belgium,Permutation
+Price,0.47777603409132896,Belgium,Permutation
+NPP,0.4397036505651496,Belgium,Permutation
+Quantity,0.21121467106780384,Belgium,Permutation
+Year,0.20816069278022598,Belgium,Permutation
+GDPP,0.0021784848634118113,Belgium,Permutation
+Growth_rate,0.0015394416001919264,Belgium,Permutation
+POP_Level,0.0009682845905989668,Belgium,Permutation
+GDP_Level,0.0007016698810413446,Belgium,Permutation
+NPP,0.48175677397810085,Estonia,Random Forest
+Price,0.12666287237750748,Estonia,Random Forest
+Value_Area,0.1256088516530886,Estonia,Random Forest
+Quantity,0.07805449257492025,Estonia,Random Forest
+Year,0.0756607332326679,Estonia,Random Forest
+Growth_rate,0.05779595261004991,Estonia,Random Forest
+POP_Level,0.03630230059397947,Estonia,Random Forest
+GDPP,0.012145754904878483,Estonia,Random Forest
+GDP_Level,0.006012268074807134,Estonia,Random Forest
+NPP,0.5328533073053825,Estonia,Gradient Boosting
+Price,0.12447272754768315,Estonia,Gradient Boosting
+Year,0.12254317989441833,Estonia,Gradient Boosting
+Value_Area,0.07312268985103282,Estonia,Gradient Boosting
+Quantity,0.06583404763843966,Estonia,Gradient Boosting
+Growth_rate,0.03949590753472041,Estonia,Gradient Boosting
+POP_Level,0.03499527412990872,Estonia,Gradient Boosting
+GDPP,0.006059083700754477,Estonia,Gradient Boosting
+GDP_Level,0.0006237823976599305,Estonia,Gradient Boosting
+NPP,0.6962086621062014,Estonia,Permutation
+Price,0.6145355195893685,Estonia,Permutation
+Quantity,0.34555304433448103,Estonia,Permutation
+Value_Area,0.27039688552009505,Estonia,Permutation
+POP_Level,0.10318339515611945,Estonia,Permutation
+Year,0.0891546745871866,Estonia,Permutation
+Growth_rate,0.036171657712179284,Estonia,Permutation
+GDPP,0.012246236490459162,Estonia,Permutation
+GDP_Level,0.005168179561380148,Estonia,Permutation
+Value_Area,0.5166962146833457,Latvia,Random Forest
+NPP,0.33225538471173643,Latvia,Random Forest
+Price,0.07472070244770328,Latvia,Random Forest
+Quantity,0.051468831322111455,Latvia,Random Forest
+Year,0.008588381969165186,Latvia,Random Forest
+POP_Level,0.007252927526974794,Latvia,Random Forest
+Growth_rate,0.00545339112117285,Latvia,Random Forest
+GDPP,0.0020062392930343697,Latvia,Random Forest
+GDP_Level,0.0015579269247559993,Latvia,Random Forest
+Value_Area,0.5356337966892413,Latvia,Gradient Boosting
+NPP,0.2977588262902634,Latvia,Gradient Boosting
+Price,0.09155085941991206,Latvia,Gradient Boosting
+Quantity,0.06674571541813829,Latvia,Gradient Boosting
+Growth_rate,0.0038729724597321713,Latvia,Gradient Boosting
+Year,0.0034042172110086396,Latvia,Gradient Boosting
+POP_Level,0.0009598661721966402,Latvia,Gradient Boosting
+GDPP,7.358976812358986e-05,Latvia,Gradient Boosting
+GDP_Level,1.5657138395069953e-07,Latvia,Gradient Boosting
+Value_Area,1.2183082884283538,Latvia,Permutation
+NPP,0.3764299028823269,Latvia,Permutation
+Price,0.3243837636468597,Latvia,Permutation
+Quantity,0.15793081471244502,Latvia,Permutation
+Year,0.019492590694278045,Latvia,Permutation
+POP_Level,0.009343551079374535,Latvia,Permutation
+Growth_rate,0.006390703149178023,Latvia,Permutation
+GDPP,0.0012798574250346474,Latvia,Permutation
+GDP_Level,0.0006154280117367961,Latvia,Permutation
+Year,0.8487575631404243,Malaysia,Random Forest
+NPP,0.09129116953223328,Malaysia,Random Forest
+Value_Area,0.03156243372776845,Malaysia,Random Forest
+GDP_Level,0.022618428608644745,Malaysia,Random Forest
+Price,0.001847249862603032,Malaysia,Random Forest
+GDPP,0.0017918806482606394,Malaysia,Random Forest
+Quantity,0.001446663645788326,Malaysia,Random Forest
+POP_Level,0.0005805375290477055,Malaysia,Random Forest
+Growth_rate,0.00010407330522968204,Malaysia,Random Forest
+Year,0.8640412428815585,Malaysia,Gradient Boosting
+NPP,0.08500262919562439,Malaysia,Gradient Boosting
+GDP_Level,0.021527309247428225,Malaysia,Gradient Boosting
+Value_Area,0.02151224107670848,Malaysia,Gradient Boosting
+GDPP,0.0033773662629877116,Malaysia,Gradient Boosting
+Quantity,0.0025215511833938165,Malaysia,Gradient Boosting
+POP_Level,0.0009640924930876157,Malaysia,Gradient Boosting
+Price,0.0007893772514370503,Malaysia,Gradient Boosting
+Growth_rate,0.00026419040777411713,Malaysia,Gradient Boosting
+Year,1.2984274198778203,Malaysia,Permutation
+NPP,0.15189519917382918,Malaysia,Permutation
+Value_Area,0.017658157736696677,Malaysia,Permutation
+GDP_Level,0.010689292255785732,Malaysia,Permutation
+Price,0.0038630758513271803,Malaysia,Permutation
+Quantity,0.0018750293986881772,Malaysia,Permutation
+GDPP,0.0013400384133599563,Malaysia,Permutation
+POP_Level,0.0004602830825251369,Malaysia,Permutation
+Growth_rate,5.658237032509783e-05,Malaysia,Permutation
+NPP,0.32676424312413155,Myanmar,Random Forest
+GDP_Level,0.19019584002411744,Myanmar,Random Forest
+Quantity,0.14029473113658564,Myanmar,Random Forest
+Value_Area,0.13606909532943076,Myanmar,Random Forest
+Growth_rate,0.11043750995330716,Myanmar,Random Forest
+Price,0.046297780738717216,Myanmar,Random Forest
+GDPP,0.028638750535581382,Myanmar,Random Forest
+POP_Level,0.016597490474513973,Myanmar,Random Forest
+Year,0.004704558683614959,Myanmar,Random Forest
+NPP,0.3681469241991484,Myanmar,Gradient Boosting
+Quantity,0.19435779078403725,Myanmar,Gradient Boosting
+Growth_rate,0.14729274428911676,Myanmar,Gradient Boosting
+Value_Area,0.09974914077358522,Myanmar,Gradient Boosting
+GDP_Level,0.08724622156487626,Myanmar,Gradient Boosting
+GDPP,0.07209943224568933,Myanmar,Gradient Boosting
+Price,0.020130688103118417,Myanmar,Gradient Boosting
+POP_Level,0.005777066839092676,Myanmar,Gradient Boosting
+Year,0.005199991201335775,Myanmar,Gradient Boosting
+NPP,0.5178849963337228,Myanmar,Permutation
+Value_Area,0.4396505254367953,Myanmar,Permutation
+Quantity,0.3795489477910002,Myanmar,Permutation
+GDP_Level,0.16321830341249188,Myanmar,Permutation
+Price,0.1593619268956574,Myanmar,Permutation
+Growth_rate,0.11811286818721775,Myanmar,Permutation
+POP_Level,0.025728703325414028,Myanmar,Permutation
+GDPP,0.010927328271564552,Myanmar,Permutation
+Year,0.00346648679590954,Myanmar,Permutation
+Year,0.7863976618807988,Nigeria,Random Forest
+NPP,0.18541528520718298,Nigeria,Random Forest
+Value_Area,0.01622041738248701,Nigeria,Random Forest
+Quantity,0.004128984158851749,Nigeria,Random Forest
+Price,0.00404042270990375,Nigeria,Random Forest
+POP_Level,0.0018387389069326797,Nigeria,Random Forest
+GDP_Level,0.0009262566972479917,Nigeria,Random Forest
+GDPP,0.0005633752421523186,Nigeria,Random Forest
+Growth_rate,0.00046885781444269177,Nigeria,Random Forest
+Year,0.8101250183891712,Nigeria,Gradient Boosting
+NPP,0.16757537567055739,Nigeria,Gradient Boosting
+Value_Area,0.01520455808688255,Nigeria,Gradient Boosting
+Price,0.002344853841924673,Nigeria,Gradient Boosting
+Quantity,0.0020406376557365845,Nigeria,Gradient Boosting
+POP_Level,0.0014367302722998548,Nigeria,Gradient Boosting
+GDP_Level,0.0008227050737420586,Nigeria,Gradient Boosting
+Growth_rate,0.00024966609027038443,Nigeria,Gradient Boosting
+GDPP,0.00020045491941528162,Nigeria,Gradient Boosting
+Year,1.5333520551985913,Nigeria,Permutation
+NPP,0.3163409972446907,Nigeria,Permutation
+Value_Area,0.036893961124287646,Nigeria,Permutation
+Quantity,0.005018909691263285,Nigeria,Permutation
+Price,0.003762031261444465,Nigeria,Permutation
+POP_Level,0.0016523713016212804,Nigeria,Permutation
+GDP_Level,0.0007028563142620237,Nigeria,Permutation
+Growth_rate,0.00036114168148027037,Nigeria,Permutation
+GDPP,0.0002634329361831722,Nigeria,Permutation
+Year,0.6887921672673067,Norway,Random Forest
+NPP,0.1705992007092708,Norway,Random Forest
+Value_Area,0.09972066334887214,Norway,Random Forest
+Price,0.02601354722600255,Norway,Random Forest
+Quantity,0.01124283633118821,Norway,Random Forest
+Growth_rate,0.001238667070777177,Norway,Random Forest
+GDPP,0.001221733814270915,Norway,Random Forest
+POP_Level,0.0006458865410688928,Norway,Random Forest
+GDP_Level,0.0005252976912426366,Norway,Random Forest
+Year,0.7394208964355402,Norway,Gradient Boosting
+NPP,0.13652982690994012,Norway,Gradient Boosting
+Value_Area,0.08924498876557588,Norway,Gradient Boosting
+Price,0.02047973382087173,Norway,Gradient Boosting
+Quantity,0.0127671064981958,Norway,Gradient Boosting
+GDPP,0.0008291296978233644,Norway,Gradient Boosting
+Growth_rate,0.0006153348286364864,Norway,Gradient Boosting
+POP_Level,0.00011298304341643142,Norway,Gradient Boosting
+GDP_Level,0.0,Norway,Gradient Boosting
+Year,1.1627355283161795,Norway,Permutation
+NPP,0.20748258039265757,Norway,Permutation
+Value_Area,0.1914175103519231,Norway,Permutation
+Price,0.10161012504703511,Norway,Permutation
+Quantity,0.018857242135632047,Norway,Permutation
+Growth_rate,0.0005510329589017759,Norway,Permutation
+GDPP,0.0004984350514069758,Norway,Permutation
+POP_Level,0.0002613727987487935,Norway,Permutation
+GDP_Level,0.00023487314808253723,Norway,Permutation
+Year,0.40060330289911006,Portugal,Random Forest
+Quantity,0.24866776790671394,Portugal,Random Forest
+NPP,0.17614818284533731,Portugal,Random Forest
+Price,0.11993873265411972,Portugal,Random Forest
+Value_Area,0.03710715416095699,Portugal,Random Forest
+POP_Level,0.006696145221172899,Portugal,Random Forest
+Growth_rate,0.005168309642202463,Portugal,Random Forest
+GDPP,0.003275212099757037,Portugal,Random Forest
+GDP_Level,0.0023951925706295453,Portugal,Random Forest
+Quantity,0.4026708198148296,Portugal,Gradient Boosting
+Year,0.27547696604116206,Portugal,Gradient Boosting
+Price,0.1507903807960178,Portugal,Gradient Boosting
+NPP,0.10380562981014609,Portugal,Gradient Boosting
+Value_Area,0.03109408622967085,Portugal,Gradient Boosting
+POP_Level,0.026571155269645246,Portugal,Gradient Boosting
+Growth_rate,0.004300260794739583,Portugal,Gradient Boosting
+GDP_Level,0.003075347250195973,Portugal,Gradient Boosting
+GDPP,0.0022153539935927573,Portugal,Gradient Boosting
+Quantity,0.9414278253094557,Portugal,Permutation
+Price,0.45179364143280926,Portugal,Permutation
+Year,0.44970336966858665,Portugal,Permutation
+NPP,0.13717809850370907,Portugal,Permutation
+Value_Area,0.05537556769784817,Portugal,Permutation
+POP_Level,0.007774835593460583,Portugal,Permutation
+Growth_rate,0.0031324434974936864,Portugal,Permutation
+GDPP,0.0020916972782322185,Portugal,Permutation
+GDP_Level,0.0017733057609971125,Portugal,Permutation
+Value_Area,0.7574517570302279,Romania,Random Forest
+Year,0.11764389817866545,Romania,Random Forest
+NPP,0.0487336307893674,Romania,Random Forest
+Price,0.03687267621786687,Romania,Random Forest
+Quantity,0.020946462710616308,Romania,Random Forest
+POP_Level,0.006958014472836124,Romania,Random Forest
+GDPP,0.005289912326585022,Romania,Random Forest
+GDP_Level,0.0045700355683771865,Romania,Random Forest
+Growth_rate,0.0015336127054575886,Romania,Random Forest
+Value_Area,0.639195354115142,Romania,Gradient Boosting
+Year,0.27648953382792274,Romania,Gradient Boosting
+NPP,0.04595715055152615,Romania,Gradient Boosting
+Price,0.01880539462266778,Romania,Gradient Boosting
+Quantity,0.006826951496721702,Romania,Gradient Boosting
+POP_Level,0.005938742112054659,Romania,Gradient Boosting
+GDP_Level,0.0027308621311290964,Romania,Gradient Boosting
+GDPP,0.0026697375503580085,Romania,Gradient Boosting
+Growth_rate,0.001386273592478011,Romania,Gradient Boosting
+Value_Area,1.3165859973707974,Romania,Permutation
+Price,0.13653109109710643,Romania,Permutation
+Quantity,0.07510011279207754,Romania,Permutation
+NPP,0.06330947350158364,Romania,Permutation
+Year,0.044421059266274446,Romania,Permutation
+POP_Level,0.01793932848390104,Romania,Permutation
+GDPP,0.005914740702167342,Romania,Permutation
+GDP_Level,0.0028554607270365627,Romania,Permutation
+Growth_rate,0.0019685034112977506,Romania,Permutation
+Value_Area,0.6715324577667349,Slovakia,Random Forest
+NPP,0.16967767941975512,Slovakia,Random Forest
+Year,0.07533030059339133,Slovakia,Random Forest
+Price,0.04043161557659102,Slovakia,Random Forest
+Quantity,0.03771808102256866,Slovakia,Random Forest
+POP_Level,0.001555092482377716,Slovakia,Random Forest
+GDPP,0.0013350540445942881,Slovakia,Random Forest
+Growth_rate,0.001307082183696787,Slovakia,Random Forest
+GDP_Level,0.0011126369102900805,Slovakia,Random Forest
+Value_Area,0.6743164903997547,Slovakia,Gradient Boosting
+NPP,0.1362188782658422,Slovakia,Gradient Boosting
+Year,0.07407039993180795,Slovakia,Gradient Boosting
+Quantity,0.054847082899779055,Slovakia,Gradient Boosting
+Price,0.04844433593808341,Slovakia,Gradient Boosting
+POP_Level,0.009265639650650507,Slovakia,Gradient Boosting
+GDPP,0.0011117847561624428,Slovakia,Gradient Boosting
+GDP_Level,0.001092371911213368,Slovakia,Gradient Boosting
+Growth_rate,0.0006330162467062197,Slovakia,Gradient Boosting
+Value_Area,1.142293102939894,Slovakia,Permutation
+Year,0.1868410060160465,Slovakia,Permutation
+NPP,0.17488672168143374,Slovakia,Permutation
+Price,0.16087402740788442,Slovakia,Permutation
+Quantity,0.13807636769317325,Slovakia,Permutation
+Growth_rate,0.0010990098827137196,Slovakia,Permutation
+GDPP,0.0008543806304025847,Slovakia,Permutation
+POP_Level,0.0008235309000362955,Slovakia,Permutation
+GDP_Level,0.0006651960083538077,Slovakia,Permutation
+Value_Area,0.6731095431904814,South Africa,Random Forest
+NPP,0.19284497914210472,South Africa,Random Forest
+Price,0.06569799138730177,South Africa,Random Forest
+Quantity,0.049271132303581634,South Africa,Random Forest
+Year,0.009390175276905876,South Africa,Random Forest
+POP_Level,0.0030682924626799653,South Africa,Random Forest
+Growth_rate,0.002765643256529726,South Africa,Random Forest
+GDPP,0.0021778728622424506,South Africa,Random Forest
+GDP_Level,0.001674370118172317,South Africa,Random Forest
+Value_Area,0.6696612559480084,South Africa,Gradient Boosting
+NPP,0.18103533758528087,South Africa,Gradient Boosting
+Price,0.07548088629959798,South Africa,Gradient Boosting
+Quantity,0.06294575329182121,South Africa,Gradient Boosting
+Year,0.004403675942171724,South Africa,Gradient Boosting
+Growth_rate,0.004060720920432847,South Africa,Gradient Boosting
+POP_Level,0.0014082909277906182,South Africa,Gradient Boosting
+GDP_Level,0.0005289983124201626,South Africa,Gradient Boosting
+GDPP,0.0004750807724761633,South Africa,Gradient Boosting
+Value_Area,1.2991008503535173,South Africa,Permutation
+Price,0.332619828566856,South Africa,Permutation
+NPP,0.14677246057706497,South Africa,Permutation
+Quantity,0.14654733110922025,South Africa,Permutation
+Year,0.011878714334992834,South Africa,Permutation
+Growth_rate,0.0021097263727644423,South Africa,Permutation
+POP_Level,0.0021060184845479225,South Africa,Permutation
+GDPP,0.0016054706520619243,South Africa,Permutation
+GDP_Level,0.0009856775445464595,South Africa,Permutation
+Value_Area,0.6375931552336838,Spain,Random Forest
+NPP,0.17458977501714995,Spain,Random Forest
+Year,0.08013595765440823,Spain,Random Forest
+Quantity,0.05143939287893379,Spain,Random Forest
+Price,0.048128129740801724,Spain,Random Forest
+GDPP,0.004943756784010775,Spain,Random Forest
+Growth_rate,0.001411389723342845,Spain,Random Forest
+POP_Level,0.0009701257105303773,Spain,Random Forest
+GDP_Level,0.0007883172571385992,Spain,Random Forest
+Value_Area,0.6355728491560475,Spain,Gradient Boosting
+NPP,0.14009667609588947,Spain,Gradient Boosting
+Year,0.09575773067945792,Spain,Gradient Boosting
+Quantity,0.07496863139743422,Spain,Gradient Boosting
+Price,0.04841112189240178,Spain,Gradient Boosting
+GDPP,0.002434065291876608,Spain,Gradient Boosting
+POP_Level,0.0018916023640413839,Spain,Gradient Boosting
+Growth_rate,0.000583633594431017,Spain,Gradient Boosting
+GDP_Level,0.00028368952842020657,Spain,Gradient Boosting
+Value_Area,1.0337096202870923,Spain,Permutation
+Quantity,0.20036928373918128,Spain,Permutation
+NPP,0.1939461095737816,Spain,Permutation
+Price,0.17610914915797066,Spain,Permutation
+Year,0.15464025015833482,Spain,Permutation
+GDPP,0.0038593892025138967,Spain,Permutation
+Growth_rate,0.0009170191866746058,Spain,Permutation
+POP_Level,0.0006281207280948164,Spain,Permutation
+GDP_Level,0.00035544669454893316,Spain,Permutation
+Value_Area,0.6820394503738813,Thailand,Random Forest
+NPP,0.1526276663529351,Thailand,Random Forest
+Year,0.11051164691577116,Thailand,Random Forest
+Quantity,0.031039202870540922,Thailand,Random Forest
+Price,0.014443302814969182,Thailand,Random Forest
+GDP_Level,0.004104824369472141,Thailand,Random Forest
+GDPP,0.003526630572144922,Thailand,Random Forest
+POP_Level,0.0008578435119740347,Thailand,Random Forest
+Growth_rate,0.0008494322183112816,Thailand,Random Forest
+Value_Area,0.5056106036082716,Thailand,Gradient Boosting
+Year,0.30370477347630825,Thailand,Gradient Boosting
+NPP,0.1363099769525506,Thailand,Gradient Boosting
+Quantity,0.029564956673642232,Thailand,Gradient Boosting
+Price,0.016551129474807712,Thailand,Gradient Boosting
+GDP_Level,0.0036960627683023284,Thailand,Gradient Boosting
+GDPP,0.0031060369220687373,Thailand,Gradient Boosting
+POP_Level,0.0007286282671588695,Thailand,Gradient Boosting
+Growth_rate,0.0007278318568896433,Thailand,Gradient Boosting
+Value_Area,1.1020952214628286,Thailand,Permutation
+NPP,0.1906405119491276,Thailand,Permutation
+Year,0.16118618396277826,Thailand,Permutation
+Quantity,0.10115315216111612,Thailand,Permutation
+Price,0.03198757367918974,Thailand,Permutation
+GDP_Level,0.004140548615669026,Thailand,Permutation
+GDPP,0.0025373844983341055,Thailand,Permutation
+POP_Level,0.0005780947691811034,Thailand,Permutation
+Growth_rate,0.0005556914471182561,Thailand,Permutation
+Year,0.5592255702453336,Turkey,Random Forest
+Value_Area,0.21374785715777725,Turkey,Random Forest
+Quantity,0.11636107120422315,Turkey,Random Forest
+NPP,0.06884049514663013,Turkey,Random Forest
+Price,0.03629220292821301,Turkey,Random Forest
+POP_Level,0.0015360512167338332,Turkey,Random Forest
+Growth_rate,0.0015048579988293609,Turkey,Random Forest
+GDPP,0.001370685846304667,Turkey,Random Forest
+GDP_Level,0.0011212082559551712,Turkey,Random Forest
+Year,0.46942096027618596,Turkey,Gradient Boosting
+Value_Area,0.30437492105601344,Turkey,Gradient Boosting
+Quantity,0.10906120420803844,Turkey,Gradient Boosting
+NPP,0.07072880511647754,Turkey,Gradient Boosting
+Price,0.03726504349578141,Turkey,Gradient Boosting
+Growth_rate,0.005058026649271771,Turkey,Gradient Boosting
+GDP_Level,0.0018851909849764894,Turkey,Gradient Boosting
+POP_Level,0.0013493017106647872,Turkey,Gradient Boosting
+GDPP,0.0008565465025901956,Turkey,Gradient Boosting
+Year,0.5165548183067886,Turkey,Permutation
+Value_Area,0.5036167871984524,Turkey,Permutation
+Quantity,0.44070254032097067,Turkey,Permutation
+Price,0.11470599169771915,Turkey,Permutation
+NPP,0.06006220720834591,Turkey,Permutation
+POP_Level,0.0013686534954937546,Turkey,Permutation
+Growth_rate,0.0009441637786637869,Turkey,Permutation
+GDP_Level,0.0005841154887560207,Turkey,Permutation
+GDPP,0.00042833723574546844,Turkey,Permutation
+Value_Area,0.7348105560651891,Ukraine,Random Forest
+Quantity,0.09635388032737846,Ukraine,Random Forest
+Year,0.06606921261468697,Ukraine,Random Forest
+NPP,0.06563749531184722,Ukraine,Random Forest
+Price,0.03222217771421642,Ukraine,Random Forest
+POP_Level,0.0013886677614734836,Ukraine,Random Forest
+Growth_rate,0.0013696105064747572,Ukraine,Random Forest
+GDPP,0.0011815382053159483,Ukraine,Random Forest
+GDP_Level,0.0009668614934175658,Ukraine,Random Forest
+Value_Area,0.755515852294532,Ukraine,Gradient Boosting
+Quantity,0.1008333763369876,Ukraine,Gradient Boosting
+Year,0.05645748449430368,Ukraine,Gradient Boosting
+NPP,0.05599801693991872,Ukraine,Gradient Boosting
+Price,0.02469750344674279,Ukraine,Gradient Boosting
+GDP_Level,0.003383322898913739,Ukraine,Gradient Boosting
+POP_Level,0.0016576186743381236,Ukraine,Gradient Boosting
+Growth_rate,0.0008225526559914231,Ukraine,Gradient Boosting
+GDPP,0.0006342722582717411,Ukraine,Gradient Boosting
+Value_Area,1.1897191174598611,Ukraine,Permutation
+Quantity,0.5028030053898845,Ukraine,Permutation
+Price,0.1101603482190892,Ukraine,Permutation
+Year,0.10784726839678363,Ukraine,Permutation
+NPP,0.062279980474312144,Ukraine,Permutation
+POP_Level,0.001051227480951733,Ukraine,Permutation
+Growth_rate,0.0009709324886599368,Ukraine,Permutation
+GDPP,0.0009268835043781176,Ukraine,Permutation
+GDP_Level,0.0006056964444955293,Ukraine,Permutation
+Year,0.6217910290396954,United Kingdom,Random Forest
+NPP,0.24357394608931726,United Kingdom,Random Forest
+Value_Area,0.07444440135448437,United Kingdom,Random Forest
+Quantity,0.03747821063671409,United Kingdom,Random Forest
+Price,0.02018845000718038,United Kingdom,Random Forest
+GDPP,0.0008352223452877143,United Kingdom,Random Forest
+GDP_Level,0.0006204694505697452,United Kingdom,Random Forest
+Growth_rate,0.0006116264478906778,United Kingdom,Random Forest
+POP_Level,0.0004566446288604093,United Kingdom,Random Forest
+Year,0.6423012526442704,United Kingdom,Gradient Boosting
+NPP,0.2210393252213518,United Kingdom,Gradient Boosting
+Quantity,0.06239675986091398,United Kingdom,Gradient Boosting
+Value_Area,0.04965919215317595,United Kingdom,Gradient Boosting
+Price,0.022563672129517556,United Kingdom,Gradient Boosting
+POP_Level,0.0011066933299349797,United Kingdom,Gradient Boosting
+GDPP,0.0004395601599601127,United Kingdom,Gradient Boosting
+GDP_Level,0.0003176040189834601,United Kingdom,Gradient Boosting
+Growth_rate,0.00017594048189165332,United Kingdom,Gradient Boosting
+Year,0.806425417521519,United Kingdom,Permutation
+NPP,0.3943059275027466,United Kingdom,Permutation
+Quantity,0.12350628516914268,United Kingdom,Permutation
+Value_Area,0.09094224999242306,United Kingdom,Permutation
+Price,0.04397649301376734,United Kingdom,Permutation
+GDPP,0.0005632192829160276,United Kingdom,Permutation
+Growth_rate,0.00038938577851390657,United Kingdom,Permutation
+GDP_Level,0.00027020930710323075,United Kingdom,Permutation
+POP_Level,0.0002179300120622396,United Kingdom,Permutation
+Year,0.6697089341679076,Uruguay,Random Forest
+NPP,0.17290603072147304,Uruguay,Random Forest
+Value_Area,0.08177172511513855,Uruguay,Random Forest
+Price,0.04259287845465099,Uruguay,Random Forest
+Quantity,0.02636878831596932,Uruguay,Random Forest
+Growth_rate,0.002319448619945373,Uruguay,Random Forest
+POP_Level,0.0018006368349738997,Uruguay,Random Forest
+GDPP,0.0016410820140333598,Uruguay,Random Forest
+GDP_Level,0.0008904757559078555,Uruguay,Random Forest
+Year,0.695215984842966,Uruguay,Gradient Boosting
+NPP,0.12312443789296043,Uruguay,Gradient Boosting
+Value_Area,0.0851169876778323,Uruguay,Gradient Boosting
+Quantity,0.04544658503401451,Uruguay,Gradient Boosting
+Price,0.04192482692275569,Uruguay,Gradient Boosting
+POP_Level,0.0031644760082253196,Uruguay,Gradient Boosting
+Growth_rate,0.0027590603355251335,Uruguay,Gradient Boosting
+GDP_Level,0.0023256316280445273,Uruguay,Gradient Boosting
+GDPP,0.0009220096576760945,Uruguay,Gradient Boosting
+Year,0.8396255399963464,Uruguay,Permutation
+Value_Area,0.3287268535629929,Uruguay,Permutation
+NPP,0.21960593105327209,Uruguay,Permutation
+Price,0.09132393219760787,Uruguay,Permutation
+Quantity,0.04177216339115575,Uruguay,Permutation
+Growth_rate,0.002056892992021375,Uruguay,Permutation
+POP_Level,0.00158276451476842,Uruguay,Permutation
+GDPP,0.0010816000602138053,Uruguay,Permutation
+GDP_Level,0.0005350179448064041,Uruguay,Permutation
+Value_Area,0.5819205590162462,Viet Nam,Random Forest
+NPP,0.3199582892669328,Viet Nam,Random Forest
+Price,0.04617690940356662,Viet Nam,Random Forest
+Quantity,0.04032042980276803,Viet Nam,Random Forest
+Year,0.004564004666225341,Viet Nam,Random Forest
+Growth_rate,0.00263241436308735,Viet Nam,Random Forest
+POP_Level,0.0022865003823242585,Viet Nam,Random Forest
+GDPP,0.0012756505435608302,Viet Nam,Random Forest
+GDP_Level,0.0008652425552885569,Viet Nam,Random Forest
+Value_Area,0.6035760809166022,Viet Nam,Gradient Boosting
+NPP,0.3349672708702253,Viet Nam,Gradient Boosting
+Quantity,0.02861971415703023,Viet Nam,Gradient Boosting
+Price,0.028286635146815432,Viet Nam,Gradient Boosting
+GDPP,0.001681652214865381,Viet Nam,Gradient Boosting
+POP_Level,0.001187141058910129,Viet Nam,Gradient Boosting
+Year,0.0009264048257203621,Viet Nam,Gradient Boosting
+Growth_rate,0.0007551008098309645,Viet Nam,Gradient Boosting
+GDP_Level,0.0,Viet Nam,Gradient Boosting
+Value_Area,0.9323011710409658,Viet Nam,Permutation
+NPP,0.34333026063064764,Viet Nam,Permutation
+Price,0.17253191486782044,Viet Nam,Permutation
+Quantity,0.13851029441658688,Viet Nam,Permutation
+Year,0.005244079595423346,Viet Nam,Permutation
+Growth_rate,0.002058349795366765,Viet Nam,Permutation
+POP_Level,0.0013561899546396638,Viet Nam,Permutation
+GDPP,0.0006803888752134224,Viet Nam,Permutation
+GDP_Level,0.00034824019804681195,Viet Nam,Permutation
+Value_Area,0.7922917198661644,Combined,Random Forest
+POP_Level,0.10419465918677852,Combined,Random Forest
+GDP_Level,0.07116687610435835,Combined,Random Forest
+Quantity,0.022698115317100264,Combined,Random Forest
+Year,0.006318533318630341,Combined,Random Forest
+NPP,0.0019503442404338281,Combined,Random Forest
+Price,0.0008513101608744613,Combined,Random Forest
+GDPP,0.0004083953129239382,Combined,Random Forest
+Growth_rate,0.00012004649273574492,Combined,Random Forest
+Value_Area,0.780771565957984,Combined,Gradient Boosting
+GDP_Level,0.10160701884199984,Combined,Gradient Boosting
+POP_Level,0.0818806634610625,Combined,Gradient Boosting
+Quantity,0.03145816988135879,Combined,Gradient Boosting
+Year,0.001721943320178897,Combined,Gradient Boosting
+Growth_rate,0.0009629685556763307,Combined,Gradient Boosting
+NPP,0.000812459431729916,Combined,Gradient Boosting
+Price,0.0005715045349472717,Combined,Gradient Boosting
+GDPP,0.000213706015062411,Combined,Gradient Boosting
+Value_Area,1.3267703011667749,Combined,Permutation
+POP_Level,0.1623919071042271,Combined,Permutation
+GDP_Level,0.07499143496362284,Combined,Permutation
+Quantity,0.053282461891748935,Combined,Permutation
+Year,0.012902043886428193,Combined,Permutation
+Price,0.004160528441179412,Combined,Permutation
+NPP,0.0032363345520516453,Combined,Permutation
+GDPP,0.001076650582764549,Combined,Permutation
+Growth_rate,0.0001484496939076707,Combined,Permutation
