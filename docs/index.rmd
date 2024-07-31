@@ -10,13 +10,21 @@ output:
 
 In this Script, the processing of NPP data and of FOROM output data is compiled
 
-## NPP data
+1.  NPP data 1.1 NPP data import 1.2 data preparation 1.3 five-year rolling average and percentage calculation 1.4 NPP figures
+
+2.  FOROM data 2.1 import Price data 2.2 import Quantity data 2.3 merge data by continent 2.4 FOROMO figures
+
+3.  Random Forest Analysis
+
+**!!Please adjust directories to your local directories!!**
+
+## 1. NPP data
 
 NPP model outputs were collected by Jinfeng Chang (College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China) and are currently stored at <https://www.pik-potsdam.de/~reyer/ISIMIP2b_forest_csv_2022-11-25/>.
 
 The data were processed as followed:
 
-Necessary libraries:
+Necessary libraries
 
 ```{r message=FALSE, warning=FALSE}
 
@@ -46,48 +54,57 @@ Files and Script preparation:
 FOROM_regions <- read.table("C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/data/FOROM_regions.txt", fill = TRUE) #names of the 50 regions
 ```
 
-**1.) data import**
+### 1.1 NPP data import
 
 import NPP data for the GVMs CARAIB, LPJ-GUESS, LPJmL, ORCHIDEE
 
 ```{r message=FALSE, warning=FALSE}
-excel_files <- dir_ls(path =  "C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/data/NPP_new", regexp = "*.csv") #create listing (fs_path object) of relevant files to read
+#create listing (fs_path object) of relevant files to read
+excel_files <- dir_ls(path =  "C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/data/NPP_new", regexp = "*.csv") 
 
-excel_files <- excel_files %>% #read all files and store their name in `source` variable
+#read all files and store their name in `source` variable
+excel_files <- excel_files %>% 
   set_names() %>% 
   map_dfr(read_csv, .id = "source")
 
 excel_files$source <- as.character(excel_files$source) 
 
-excel_files <- excel_files %>% #remove extension of the file name and separate into columns
+#separate source into columns to get vegmodel, GCM and RCP
+excel_files <- excel_files %>% 
   mutate(source = str_remove(source, "(.*)ISIMIP2b_")) %>% 
   separate(source, into = c("variable","forest", "vegmodel", "GCM", "rcp" ), sep = "_") %>% 
   subset(select = -c(forest,variable))
   
+#remove extension from rcp column 
 excel_files <- excel_files %>% 
   mutate(rcp = str_remove(rcp, ".csv")) 
 
 names(excel_files)[4] <- "year"
 
+#calculate actual year 
 excel_files <- excel_files %>% 
   mutate(year = ifelse(rcp == "historical", year + 1860, year)) %>% 
   mutate(year = ifelse(rcp %in% c("rcp26", "rcp60", "rcp85"), year + 2005, year))
 
+#give FOROM region names to columns 
 names(excel_files)[5:54] <- c(FOROM_regions$V2)
 
 excel_files[excel_files == 0] <- NA
 ```
 
-import NPP data for the GVM MC2
+import NPP data for the GVM MC2 --\> right now still in extra file
 
 ```{r message = FALSE, warning=FALSE}
+#create listing (fs_path object) of relevant files to read
 npp_files <- dir_ls(path = "C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/data/MC2", regexp = "*.csv") 
 
+#read all files and store their name in `source` variable
 npp_files <- npp_files %>% 
   map_dfr(read_csv, .id = "source", skip = 1)
 
 npp_files$source <- as.character(npp_files$source)
 
+#separate source into columns to get vegmodel, GCM and RCP
 npp_files<- npp_files %>% 
   mutate(source = str_remove(source, "(.*)MC2/")) %>% 
   separate(source, into = c( "GCM", "rcp", "variable"), sep = "_") %>% 
@@ -95,36 +112,47 @@ npp_files<- npp_files %>%
   
 npp_files <- npp_files[-54]
 
+#give FOROM region names to columns 
 names(npp_files)[4:53] <- c(FOROM_regions$V2)
 
 npp_files$vegmodel <- c("MC2")
-
 npp_files <- npp_files %>% 
   relocate(vegmodel)
 
 npp_files <- npp_files %>% 
   mutate(rcp = ifelse(year <= 2005, "historical", rcp))
   
-
-npp_files$NA_ROC <- NA #no data for NA_ROC is available for MC2
+#no data for NA_ROC is available for MC2
+npp_files$NA_ROC <- NA 
 ```
 
 merge NPP data of vegetation models
 
 ```{r}
 npp.data <- rbind(npp_files, excel_files) 
+rm(excel_files,npp_files)
 ```
 
-**2.) data prepatarion**
+### 1.2 data preparation
 
-Subset the data to GVMs RCPs and time that is used
+Subset the data to GVMs RCPs and time that is used:
+
+GVMs: CARAIB, LPJmL,LPJ-GUESS, ORCHIDEE & MC2
+
+GCMs: gfdl-esm2m, hadgem2-es, ipsl-cm5a-lr, miroc5
+
+time: 1964 - 2099
+
+RCPs: rcp26, rcp60, rcp85
 
 ```{r}
+# CLM45 is not used in this study! 
+npp.data <- subset(npp.data, npp.data$vegmodel != "CLM45") 
 
-npp.data <- subset(npp.data, npp.data$vegmodel != "CLM45") # CLM45 is not used in this study! 
+# subset to time of concern
+npp.data <- subset(npp.data, npp.data$year %in% c(1964:2099)) 
 
-npp.data <- subset(npp.data, npp.data$year %in% c(1964:2099)) # subset to time of concern
-
+#CARAIB did not provide data for rcp85
 npp.data <-npp.data %>%
   filter(!(GCM=="gfdl-esm2m" & vegmodel== "CARAIB" & rcp =="rcp85" )) %>%
   filter(!(GCM=="hadgem2-es" & vegmodel== "CARAIB"& rcp =="rcp85" )) %>%
@@ -137,64 +165,353 @@ npp.data <-npp.data %>%
 overview of NPP data:
 
 ```{r}
-head(npp.data, 10)
+head(npp.data, 10) #just as an example
 ```
 
-transform data from wide to long:
+transform data from wide to long, so that each a new region column gets created:
 
 ```{r}
 npp.data <- melt(npp.data, id.vars = c("vegmodel", "GCM", "rcp", "year"))
 
 colnames(npp.data)[colnames(npp.data) == "variable"] <- "region"
 
-str(npp.data)
+str(npp.data) # region now as a factor-column 
 
 ```
 
-**3.) mean calculation**
+### 1.3 five-year rolling average and percentage to baseline calculation
 
 5-year rolling averages for NPP data
 
 ```{r}
 rolling_avg_window <- 5 # take the last 5 years for the calculation of mean 
 
-npp.data <- npp.data %>%
-  group_by(vegmodel,GCM,rcp,region) %>%
+rolling.data <- npp.data %>%
+  group_by(vegmodel, GCM, rcp,region) %>%
   mutate(RollingAverage = rollmean(value, k = rolling_avg_window, align = "right", fill = NA))
 ```
 
 Calculate the average RollingAverage between 1980-2005 for each RCP and Region
 
-```{r}
-avg_rolling_1980_2005 <- npp.data %>%
+```{r, message=FALSE}
+rolling.baseline <- rolling.data %>%
   filter(year >= 1980 & year <= 2005) %>%
-  group_by(vegmodel,GCM,rcp,region) %>%
-  summarize(avg_rolling_1980_2005 = mean(RollingAverage, na.rm = TRUE)) %>% 
+  group_by(vegmodel, GCM, rcp,region) %>%
+  summarize(baseline = mean(RollingAverage, na.rm = TRUE)) %>% 
   subset(select = -c(rcp))
-
 ```
+
+
+Calculate rolling average of years after 2005
+
+
+```{r}
+rolling.data <- rolling.data %>%
+  filter(year > 2005) %>%
+  group_by(vegmodel, GCM, rcp,region, year) %>%
+  summarize(value = mean(RollingAverage, na.rm = TRUE))
+```
+
 
 Join the average RollingAverage of the baseline period back to the original dataframe
 
 ```{r}
-npp.data <- npp.data %>%
-  left_join(avg_rolling_1980_2005, by = c("vegmodel","GCM","region"))
+rolling.data <- rolling.data %>%
+  left_join(rolling.baseline, by = c("vegmodel","GCM","region"))
 ```
 
 Calculate the percentage increase/decrease of the actual rolling average in NPP compared to the baseline period
 
 ```{r}
-npp.data$Percentage <- (npp.data$value - npp.data$avg_rolling_1980_2005) / npp.data$avg_rolling_1980_2005
+rolling.data$percentage <- (rolling.data$value - rolling.data$baseline) / rolling.data$baseline *100
 
-
-dt <- npp.data %>% 
-  filter(year==2020|year==2025|year==2030|year==2035|year==2040|year==2045|year==2050|year==2055|year==2060|year==2065|year==2070)%>%
-  select(vegmodel, GCM,rcp, region,year,value,avg_rolling_1980_2005,Percentage) 
+#filter for the 5-year period 
+dt <- rolling.data %>% 
+  filter(year %in% c(2020,2025,2030,2035,2040,2045,2050,2055,2060,2065,2070))%>%
+  select(vegmodel, GCM,rcp, region,year,value,baseline,percentage) 
 ```
 
 This dataset "dt" is used for the simulation in the FOROM model with only minor adjustments. After the model was run, the output is again processed in R!
 
-## FOROM data
+### 1.4 NPP figures
+
+**Figure SOM2 - historic and future NPP trends**
+
+```{r}
+world <- vect("C:/Users/maxto/Desktop/HIWI-Arbeit/FOROM_paper/data/world_shp/World_regions_50_new.shp")
+country_code <- read.csv("C:/Users/maxto/Desktop/HIWI-Arbeit/FOROM_paper/data/country_code.csv")
+world <- merge(world, country_code, by.x = "RegionNam", by.y = "country", all.x = TRUE)
+
+vegmodel <- c("CARAIB", "LPJmL", "LPJ-GUESS", "MC2", "ORCHIDEE")
+rcp <- c("historic", "rcp26", "rcp60", "rcp85")
+```
+
+preparation of data
+
+```{r, warning = FALSE}
+
+#### separate data in future and historic 
+  npp_hist <- subset(npp.data, npp.data$year %in% c(1980:2005))
+  npp_fut <- subset(npp.data, npp.data$year %in% c(2041:2070))
+
+  
+#-----------------------#
+#### linear models ####
+#-----------------------#
+
+#### historic 
+  
+lm_hist <- npp_hist %>% 
+    dplyr::group_by(year, vegmodel, rcp, region) %>%
+    dplyr::summarise_at(vars(-c(GCM)), funs(mean(value, na.rm=TRUE))) %>%
+    na.omit() %>%
+    dplyr::group_by(region, vegmodel, rcp) %>% 
+    lm_table(value ~ year, df = .)
+  
+
+  lm_hist <-with(lm_hist,  lm_hist[order(as.character(region)) , ])
+  lm_hist <- aggregate(lm_hist$b1, by=list( vegmodel = lm_hist$vegmodel, region = lm_hist$region), FUN=mean) 
+  
+  lm_hist$rcp <- "historic"
+  lm_hist$b1 <- lm_hist$x
+  lm_hist <- lm_hist[-3]
+  
+  
+#### future 
+  
+  lm_fut <- npp_fut %>% 
+    dplyr::group_by(year, vegmodel, rcp, region) %>%
+    dplyr::summarise_at(vars(-c(GCM)), funs (mean(value, na.rm=TRUE)))%>%
+    na.omit() %>%
+    dplyr::group_by(region, vegmodel, rcp) %>% 
+    lm_table(value ~ year, df = .)
+  
+  
+  lm_fut <-with(lm_fut,  lm_fut[order(as.character(region)) , ])
+  
+#### combine 
+  
+  lm_data <- bind_rows(lm_fut, lm_hist)
+  
+  
+  fut.world <- merge(world, lm_data, by.x = "ISO", by.y = "region", all.x = TRUE)
+
+```
+
+creating the figure
+
+```{r}
+ 
+  plot_list1 <- list()
+  nested_list <- list()
+
+  for (i in 1:length(vegmodel)) {
+    for (j in 1:length(rcp)) {
+      if(vegmodel[i]== "CARAIB" & rcp[j] == "rcp85"){plot_list1[[j]] <- NA} 
+      else {
+        
+        plot  <- ggplot(data = subset(fut.world, fut.world$vegmodel == vegmodel[i] & fut.world$rcp == rcp[j]), aes(fill = b1))+ 
+          geom_sf()+ 
+          coord_sf(crs = 4326, expand = TRUE)+
+          theme_classic()+ 
+          labs(title = "")+
+          ylab(expression(paste("NPP [", ~frac(kg,m^2 ~ s),"]")))+
+          scale_fill_gradientn(
+            name = expression(paste("NPP [", ~frac(kg,m^2 ~ s),"] per year")),
+            colors=c("darkred","white","forestgreen"),
+            values=rescale(c(-2.5,0,6)),
+            limits=c(-2.5,6),
+            oob=squish
+          )+
+          theme(panel.spacing.y = unit(10, "lines"), 
+                axis.line.x =   element_line(colour = "black"),
+                axis.line.y = element_line(color="black"),
+                axis.text.x = element_text(size = 10, colour = "black"),
+                #axis.ticks.x = element_blank(),
+                legend.title = element_text(size = 14, face = "bold"),
+                legend.text = element_text(size = 12, face = "bold"),
+                legend.key.height  = unit(4, "cm"))
+        
+        plot_list1[[j]] <- plot
+      }
+    }
+    nested_list[[i]] <- plot_list1
+  }
+  
+  combined.plot <- ggarrange(plotlist = c(nested_list[[1]],nested_list[[2]],nested_list[[3]],nested_list[[4]],nested_list[[5]]), labels = list("historic", "   rcp26", "   rcp60","   rcp85"), legend = "right", ncol = 4, nrow = 5, common.legend = TRUE, widths = c(0.25,0.25,0.25,0.25), hjust = -2.5, font.label = list(size = 16, face = "bold", color ="black"))
+  
+  
+#jpeg(file="C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/figures/npp_world_trend_new.jpeg", width = 1400, height = 800, quality = 1000)
+  print(annotate_figure(combined.plot, 
+                        left = text_grob("              ORCHIDEE                          MC2                            LPJmL                        LPJ-GUESS                       CARAIB", rot = 90, hjust = 0.55,
+                                         color = "black", face = "bold", size = 16)))
+  
+#while (!is.null(dev.list()))  dev.off()
+```
+
+**Figure SOM3 - Future NPP percentage compared to baseline 1980-2005**
+
+```{r}
+rcp <- c("rcp26", "rcp60", "rcp85")
+```
+
+```{r}
+npp_hist_mean <- npp_hist %>% 
+  group_by(vegmodel, rcp, region) %>%
+  summarise_at(vars(-c(GCM, year)), funs (mean(., na.rm=TRUE))) 
+
+
+npp_hist_mean <- with(npp_hist_mean, npp_hist_mean[order(as.character(region)) , ])
+
+
+npp_fut_mean <- npp_fut %>% 
+  group_by(vegmodel, rcp, region) %>%
+  summarise_at(vars(-c(GCM, year)), funs (mean(., na.rm=TRUE))) 
+
+npp_fut_mean <- with(npp_fut_mean, npp_fut_mean[order(as.character(region)) , ])
+
+npp_mean <- merge(npp_hist_mean[, c("vegmodel", "region", "value")], npp_fut_mean[, c("vegmodel", "rcp", "region", "value")], by.x = c("vegmodel", "region"), by.y =c("vegmodel", "region"), all.y = TRUE) 
+
+colnames(npp_mean) <- c("vegmodel","region","hist", "rcp", "fut")
+
+npp_mean$perc <- (npp_mean$fut-npp_mean$hist)/npp_mean$hist*100
+
+# bind values to world vector 
+
+mean.world <- merge(world, npp_mean, by.x = "ISO", by.y = "region", na.rm = FALSE)
+
+mean.world <- mean.world[!grepl("NaN", mean.world$perc),]
+```
+
+figure creation
+
+```{r}
+
+plot_list1 <- list()
+nested_list <- list()
+
+for (i in 1:length(vegmodel)) {
+  for (j in 1:length(rcp)) {
+    plot  <- ggplot(subset(mean.world, mean.world$vegmodel == vegmodel[i] & mean.world$rcp == rcp[j]), aes(fill = perc))+ 
+      geom_sf()+ 
+      coord_sf(crs = 4326)+
+      #facet_wrap(vegmodel~rcp)+ 
+      theme_classic()+ 
+      labs(title = "")+
+      ylab(expression(paste("Percentage [%]")))+
+      scale_fill_gradientn(
+        name = "Percentage [%]",
+        colors=c("darkred","white","forestgreen"),
+        values=rescale(c(-25,0,100)),
+        limits=c(-25,100),
+        oob=squish
+      )+
+      theme(panel.spacing.y = unit(10, "lines"), 
+            axis.line.x =   element_line(colour = "black"),
+            axis.text.x = element_text(size = 12, colour = "black"),
+            #axis.ticks.x = element_blank(),
+            legend.title = element_text(size = 14, face = "bold"),
+            legend.text = element_text(size = 12, face = "bold"),
+            legend.key.height  = unit(4, "cm"))
+    
+    plot_list1[[j]] <- plot
+  }
+  nested_list[[i]] <- plot_list1
+}
+
+nested_list[[1]][[3]] <- NA # for CARAIB rcp85
+
+combined.plot <- ggarrange(plotlist = c(nested_list[[1]],nested_list[[2]],nested_list[[3]],nested_list[[4]],nested_list[[5]]), labels = list("rcp26", "rcp60","rcp85"), legend = "right", ncol = 3, nrow = 5, common.legend = TRUE, widths = c(0.3,0.3,0.3), hjust = -4, font.label = list(size = 16, face = "bold", color ="black"))
+
+jpeg(file="npp_world_menachange.jpeg", width = 1200, height = 800, quality = 100)
+print(annotate_figure(combined.plot, 
+                      left = text_grob("              ORCHIDEE                          MC2                            LPJmL                        LPJ-GUESS                       CARAIB", rot = 90, hjust = 0.55,
+                                       color = "black", face = "bold", size = 16)))
+dev.off()
+```
+
+**Figure SOM4 - CV agreement of models**
+
+build cv
+
+```{r, warning=FALSE}
+npp_fut_sd <- npp_fut %>% 
+  group_by(vegmodel, rcp, year, region) %>%
+  summarise_at(vars(-c(GCM)), funs(sd(value, na.rm=TRUE))) 
+
+
+npp_fut_mean <- npp_fut %>% 
+  group_by(vegmodel, rcp, year, region) %>%
+  summarise_at(vars(-c(GCM)), funs(mean(value, na.rm=TRUE))) 
+
+
+npp_fut_cv <- merge(npp_fut_mean[,c("vegmodel", "rcp", "region", "year", "value")], npp_fut_sd[,c("vegmodel", "rcp", "region", "year", "value")], by.x = c("vegmodel", "rcp", "region", "year"), by.y = c("vegmodel", "rcp", "region", "year"))  
+
+
+npp_fut_cv$cv <- npp_fut_cv$value.y/npp_fut_cv$value.x *100
+
+
+npp_fut_cv <- npp_fut_cv %>% 
+  group_by(vegmodel, rcp, region) %>%
+  summarise_at(vars(-c(year)), funs(mean(cv, na.rm=TRUE))) 
+
+
+
+cv.world <- merge(world, npp_fut_cv, by.x = "ISO", by.y = "region", na.rm = FALSE)
+
+cv.world <- cv.world[!grepl("NaN", cv.world$value),]
+
+```
+
+figure creation
+
+```{r}
+plot_list1 <- list()
+nested_list <- list()
+
+for (i in 1:length(vegmodel)) {
+  for (j in 1:length(rcp)) {
+    plot  <- ggplot(subset(cv.world, cv.world$vegmodel == vegmodel[i] & cv.world$rcp == rcp[j]), aes(fill = cv))+ 
+      geom_spatvector()+ 
+      coord_sf(crs = 4326)+
+      theme_classic()+ 
+      labs(title = "")+
+      ylab("Mean CV")+
+      scale_fill_gradientn(
+        name = "Mean future CV",
+        colors=c("white", "darkred"),
+        values=rescale(c(0,100)),
+        limits=c(0,100),
+        oob=squish
+      )+
+      theme(panel.spacing.y = unit(10, "lines"), 
+            axis.line.x =   element_line(colour = "black"),
+            axis.text.x = element_text(size = 12, colour = "black"),
+            #axis.ticks.x = element_blank(),
+            legend.title = element_text(size = 14, face = "bold"),
+            legend.text = element_text(size = 12, face = "bold"),
+            legend.key.height  = unit(4, "cm"))
+    
+    plot_list1[[j]] <- plot
+  }
+  nested_list[[i]] <- plot_list1
+}
+
+nested_list[[1]][[3]] <- NA
+
+combined.plot <- ggarrange(plotlist = c(nested_list[[1]],nested_list[[2]],nested_list[[3]],nested_list[[4]],nested_list[[5]]), labels = list("rcp26", "rcp60","rcp85"), legend = "right", ncol = 3, nrow = 5, common.legend = TRUE, widths = c(0.3,0.3,0.3), hjust = -4, font.label = list(size = 16, face = "bold", color ="black"))
+
+
+#jpeg(file="cv_world_npp_fut.jpeg", width = 1200, height = 800, quality = 100)
+print(annotate_figure(combined.plot, 
+                      left = text_grob("              ORCHIDEE                          MC2                            LPJmL                        LPJ-GUESS                       CARAIB", rot = 90, hjust = 0.55,
+                                       color = "black", face = "bold", size = 16)))
+#dev.off()
+
+
+```
+
+## 2. FOROM data
 
 GAMS need to be installed on your computer in order to convert the .gdx-file in a readable R table. You can download it here: <https://www.gams.com/download/>
 
@@ -222,12 +539,12 @@ library(reshape2)
 
 set igdx to local file of GAMS
 
-```{r message = FALSE}
+```{r, message = FALSE}
 igdx("C:/GAMS/46")
 
 ```
 
-**PS_all (Price)**
+### 2.1 import Price (PS_all) and percentage change calculation
 
 1.) Import dataset
 
@@ -269,7 +586,7 @@ percentage_changes_price$percentage <- (percentage_changes_price$AverageValue_20
 
 ```
 
-**QS_all (Quantity)**
+### 2.2 import Quantity (QS_all) and percentage change calculation
 
 1.) Import dataset
 
@@ -289,7 +606,7 @@ quantity_df <- quantity_df %>%
 
 ```
 
-3.) take the mean over the GCMs and calculate the percentage change
+3.) take the mean over the GCMs and calculate the percentage change from 2070 to 2020
 
 ```{r}
 percentage_changes_quantity <- quantity_df %>%
@@ -309,8 +626,7 @@ percentage_changes_quantity$percentage2070 <- (percentage_changes_quantity$Avera
 
 ```
 
-
-**Merge the data by continent!**
+### 2.3 Data merging by continent
 
 ```{r}
 region_to_rcode <- c(
@@ -373,8 +689,6 @@ region_to_rcode <- c(
 
 ```
 
-
-
 ```{r}
 continent_price <- percentage_changes_price %>% 
   group_by(SSP, Product,DGVM,RCP, continent) %>% 
@@ -393,7 +707,26 @@ continent_quantity <- percentage_changes_quantity %>%
 continent_quantity$percentage <- (continent_quantity$sum2070 - continent_quantity$sum2020) / continent_quantity$sum2020 * 100
 ```
 
-Create Figure 1!
+### 2.4 FOROM figures
+
+Libraries:
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(data.table)
+library(plyr)
+library(dplyr)
+library(readxl)
+library(RColorBrewer)
+#install.packages("ggpattern")
+library(ggpattern)
+library(tidyr)
+library(ggnewscale)
+library(ggpubr)
+library(cowplot)
+```
+
+**Figure 1 - Quantity and Price**
 
 ```{r}
 combined_data <- left_join(price_df, quantity_df, by = c("SSP","Product", "Region", "Year", "DGVM", "RCP", "GCM")) %>%
@@ -410,128 +743,634 @@ data_plot <- left_join(data_plot , baseline_plot %>% select(SSP,Product, Region,
 data_plot$Quantity_prct <- (data_plot$Quantity - data_plot$Quantity_baseline) / data_plot$Quantity_baseline * 100
 data_plot$Price_prct <- (data_plot$Price - data_plot$Price_baseline) / data_plot$Price_baseline * 100
 
-#data_plot <- data_plot %>% 
-#  group_by(SSP, Region,RCP, Product) %>% 
-#  summarise(mean_quantity = mean(Quantity, na.rm = TRUE), 
-#            SD_quantity = sd(Quantity, na.rm = TRUE),
-#            mean_quantity_prct = mean(Quantity_prct, na.rm = TRUE), 
-#            SD_quantity_prct = sd(Quantity_prct, na.rm = TRUE),
-#            mean_Price = mean(Price, na.rm = TRUE), 
-#            SD_Price = sd(Price, na.rm = TRUE),
-#            mean_Price_prct = mean(Price_prct, na.rm = TRUE),
-#            SD_Price_prct = sd(Price_prct, na.rm = TRUE))
+```
 
-#data_plot$coniferous <- ifelse(grepl("N",data_plot$Product), "NO", "YES")
+Quantity
 
-#data_plot <- data_plot %>% 
-#  mutate(ID = row_number()) 
+```{r, warning = FALSE, message=FALSE}
 
+colour_2070 <- c("#C2AB44","#2353BA","#BA672B","#942323" )
+colour_2020 <- c("#E3E088" , "#7DA1DB", "#E6A97E","#E06165")
+Products <- as.character(unique(data_plot$Product))
+
+
+
+actual_plot_list <- list()
+baseline_plot_list <- list()
+quantity_plot_list <- list()
+
+for (i in 1:length(unique(data_plot$Region))) {
+  
+    act_data <-  data_plot %>% filter(Region == unique(data_plot$Region)[i], SSP == "SSP2") 
+    
+    actual_plot_list[[i]] <- ggplot(act_data, aes(fill = Product)) + 
+      geom_bar(data = act_data %>% group_by(SSP, Region,RCP, Product, Year) %>% 
+                 summarise(mean_quantity = mean(Quantity, na.rm = TRUE), 
+                           SD_quantity = sd(Quantity, na.rm = TRUE),
+                           mean_quantity_prct = mean(Quantity_prct, na.rm = TRUE), 
+                           SD_quantity_prct = sd(Quantity_prct, na.rm = TRUE)) %>% 
+                 mutate(ID = row_number()),
+               aes(x = RCP,y = mean_quantity_prct),
+               stat = "identity", 
+               position = position_dodge2(),
+               width = 0.7
+               )+ 
+      geom_errorbar(data = act_data %>% group_by(SSP, Region,RCP, Product, Year) %>% 
+                      summarise(mean_quantity = mean(Quantity, na.rm = TRUE), 
+                                SD_quantity = sd(Quantity, na.rm = TRUE),
+                                mean_quantity_prct = mean(Quantity_prct, na.rm = TRUE), 
+                                SD_quantity_prct = sd(Quantity_prct, na.rm = TRUE)) %>% 
+                      mutate(ID = row_number()),
+                    aes(x = RCP,ymin=mean_quantity_prct-SD_quantity_prct,
+                        ymax=mean_quantity_prct+SD_quantity_prct),
+                    width=0.6, size = 0.4, colour="black", alpha=1.2, position = position_dodge(0.7)) +
+      scale_fill_manual(values = colour_2070, guide = "none") +
+      #facet_grid(.~ RCP)+
+      new_scale_colour()+
+      geom_point(data = act_data,
+                 aes(x=RCP, y = Quantity_prct, colour = DGVM, group = factor(Product)), 
+                 shape = 95, size =4, alpha = 1, position = position_dodge(0.7))+
+      scale_colour_manual(values = c("#696363", "#E0410B", "#158A11", "#379FA8", "#C419BB"))+
+      theme_bw() + 
+      #ylim(-3,15)+
+      labs(y = "Percentage Change")+
+      if(i == 8) {
+        theme(
+        axis.title = element_blank(),
+        axis.text = element_text(size = 11, colour = "black"), 
+        axis.text.x = element_text(size = 11, colour = "black"),
+        legend.text = element_text(size = 11, colour = "black"), 
+        legend.title = element_text(size = 12, colour = "black"), 
+        legend.spacing.y = unit(0.3, 'cm'), 
+        legend.position="bottom")}  else if (i == 7) {
+          
+          theme(
+            axis.text = element_text(size = 11, colour = "black"), 
+            axis.title.y = element_text(colour = "black", size = 12),
+            axis.title.x = element_blank(),
+            legend.text = element_text(size = 11, colour = "black"), 
+            legend.title = element_text(size = 12, colour = "black"), 
+            legend.spacing.y = unit(0.3, 'cm'), 
+            legend.position="bottom") } else if (i %in% c(1,3,5)) {
+              
+              theme(
+                axis.text.y = element_text(size = 11, colour = "black"), 
+                axis.text.x = element_blank(),
+                axis.title.x = element_blank(),
+                axis.title.y = element_text(colour = "black", size = 12),
+                legend.text = element_text(size = 11, colour = "black"), 
+                legend.title = element_text(size = 12, colour = "black"), 
+                legend.spacing.y = unit(0.3, 'cm'), 
+                legend.position="bottom")} else {
+          
+          theme(
+            axis.title = element_blank(),
+            axis.text.y = element_text(size = 11, colour = "black"), 
+            axis.text.x = element_blank(),
+            axis.ticks.x = element_blank(),
+            legend.text = element_text(size = 11, colour = "black"), 
+            legend.title = element_text(size = 12, colour = "black"), 
+            legend.spacing.y = unit(0.3, 'cm'),
+            legend.position="bottom")
+        }
+    
+    
+    
+    act_baseline <- baseline_plot %>% filter(Region == unique(data_plot$Region)[i], SSP == "SSP2")
+    
+    baseline_plot_list[[i]] <- ggplot(data = act_baseline, aes(y = factor(Year, levels = c(2070, 2020)), x = Quantity, fill = Product))+ 
+      geom_bar(stat = "identity", position = position_dodge2(), width = 0.7) +
+      scale_fill_manual(values =  c(colour_2070))+
+      theme_bw() + 
+      #annotate("text", x = -Inf, y = -Inf, label = as.character(unique(data_plot$Region)[i]), vjust = -50, hjust = -9) +
+      scale_x_continuous(position = "top") +
+      labs(y = "Year", x = "Quantity [in ??]")+
+      if(i %in% c(1,2)) {
+        theme(
+          axis.text.y = element_text(size = 11, colour = "black"),
+          legend.text = element_text(size = 11, colour = "black"), 
+          legend.title = element_text(size = 12, colour = "black"), 
+          legend.spacing.y = unit(0.3, 'cm'),
+          legend.position="bottom",
+          axis.title.x  = element_text(size = 11, colour = "black"),
+          axis.title.y = element_blank())
+
+           } else {
+            
+            theme(
+              axis.title = element_blank(),
+              axis.text.y = element_text(size = 11, colour = "black"), 
+              legend.text = element_text(size = 11, colour = "black"), 
+              legend.title = element_text(size = 12, colour = "black"), 
+              legend.spacing.y = unit(0.3, 'cm'),
+              legend.position="bottom")
+            
+          }
+    
+    leg_1<- get_legend(actual_plot_list[[i]])
+    leg_2 <- get_legend(baseline_plot_list[[i]])
+    
+    
+    
+  quantity_plot_list[[i]] <- ggarrange(baseline_plot_list[[i]],NULL,actual_plot_list[[i]],
+                              #labels = c("A",NA, "B"), 
+                               heights = c(0.7,0,1),
+                               widths = c(1,0,0.1),
+                               ncol = 1,
+                               align = "v", 
+                               legend = "none") 
+    
+  }
+  
+
+leg<- plot_grid(leg_1, NULL,leg_2,
+                rel_heights = c(1,0.1,1),
+                ncol = 1, 
+                align = "v") 
+
+
+quantity_1 <- ggarrange(quantity_plot_list[[1]],quantity_plot_list[[2]],quantity_plot_list[[3]],quantity_plot_list[[4]],quantity_plot_list[[5]],quantity_plot_list[[6]],quantity_plot_list[[7]],quantity_plot_list[[8]],
+          labels = c("A","B","C","D","E","F","G","H"),
+          nrow = 4, ncol = 2,
+          align = "h")
+
+
+quantity_2 <- plot_grid(quantity_1,leg,
+                rel_heights = c(1,0.1),
+                ncol = 1, 
+                align = "v") 
+
+quantity_2
 
 ```
 
-**Forest_Stock**
+Price
+
+```{r, warning=FALSE, message=FALSE}
+actual_plot_list <- list()
+baseline_plot_list <- list()
+price_plot_list <- list()
+
+for (i in 1:length(unique(data_plot$Region))) {
+  
+    act_data <-  data_plot %>% filter(Region == unique(data_plot$Region)[i], SSP == "SSP2") 
+    
+    actual_plot_list[[i]] <- ggplot(act_data, aes(fill = Product)) + 
+      geom_bar(data = act_data %>% group_by(SSP, Region,RCP, Product, Year) %>% 
+                 summarise(mean_Price = mean(Price, na.rm = TRUE), 
+                           SD_Price = sd(Price, na.rm = TRUE),
+                           mean_price_prct = mean(Price_prct, na.rm = TRUE),
+                           SD_Price_prct = sd(Price_prct, na.rm = TRUE)) %>% 
+                 mutate(ID = row_number()),
+               aes(x = RCP,y = mean_price_prct),
+               stat = "identity", 
+               position = position_dodge2(),
+               width = 0.7
+               )+ 
+      geom_errorbar(data = act_data %>% group_by(SSP, Region,RCP, Product, Year) %>% 
+                      summarise(mean_price = mean(Price, na.rm = TRUE), 
+                                SD_price = sd(Price, na.rm = TRUE),
+                                mean_price_prct = mean(Price_prct, na.rm = TRUE), 
+                                SD_price_prct = sd(Price_prct, na.rm = TRUE)) %>% 
+                      mutate(ID = row_number()),
+                    aes(x = RCP,ymin=mean_price_prct-SD_price_prct,
+                        ymax=mean_price_prct+SD_price_prct),
+                    width=0.6, size = 0.4, colour="black", alpha=1.2, position = position_dodge(0.7)) +
+      scale_fill_manual(values = colour_2070, guide = "none") +
+      #facet_grid(.~ RCP)+
+      new_scale_colour()+
+      geom_point(data = act_data,
+                 aes(x=RCP, y = Price_prct, colour = DGVM, group = factor(Product)), 
+                 shape = 95, size =4, alpha = 1, position = position_dodge(0.7))+
+      scale_colour_manual(values = c("#696363", "#E0410B", "#158A11", "#379FA8", "#C419BB"))+
+      theme_bw() + 
+      #ylim(-3,15)+
+      labs(y = "Percentage Change")+
+      if(i == 8) {
+        theme(
+        axis.title = element_blank(),
+        axis.text = element_text(size = 11, colour = "black"), 
+        axis.text.x = element_text(size = 11, colour = "black"),
+        legend.text = element_text(size = 11, colour = "black"), 
+        legend.title = element_text(size = 12, colour = "black"), 
+        legend.spacing.y = unit(0.3, 'cm'), 
+        legend.position="bottom")}  else if (i == 7) {
+          
+          theme(
+            axis.text = element_text(size = 11, colour = "black"), 
+            axis.title.y = element_text(colour = "black", size = 12),
+            axis.title.x = element_blank(),
+            legend.text = element_text(size = 11, colour = "black"), 
+            legend.title = element_text(size = 12, colour = "black"), 
+            legend.spacing.y = unit(0.3, 'cm'), 
+            legend.position="bottom") } else if (i %in% c(1,3,5)) {
+              
+              theme(
+                axis.text.y = element_text(size = 11, colour = "black"), 
+                axis.text.x = element_blank(),
+                axis.title.x = element_blank(),
+                axis.title.y = element_text(colour = "black", size = 12),
+                legend.text = element_text(size = 11, colour = "black"), 
+                legend.title = element_text(size = 12, colour = "black"), 
+                legend.spacing.y = unit(0.3, 'cm'), 
+                legend.position="bottom")} else {
+          
+          theme(
+            axis.title = element_blank(),
+            axis.text.y = element_text(size = 11, colour = "black"), 
+            axis.text.x = element_blank(),
+            axis.ticks.x = element_blank(),
+            legend.text = element_text(size = 11, colour = "black"), 
+            legend.title = element_text(size = 12, colour = "black"), 
+            legend.spacing.y = unit(0.3, 'cm'),
+            legend.position="bottom")
+        }
+    
+    
+    
+    act_baseline <- baseline_plot %>% filter(Region == unique(data_plot$Region)[i], SSP == "SSP2")
+    
+    baseline_plot_list[[i]] <- ggplot(data = act_baseline, aes(y = factor(Year, levels = c(2070, 2020)), x = Price, fill = Product))+ 
+      geom_bar(stat = "identity", position = position_dodge2(), width = 0.7) +
+      scale_fill_manual(values =  c(colour_2070))+
+      theme_bw() + 
+      scale_x_continuous(position = "top") +
+      labs(y = "Year", x = "price [in ??]")+
+      if(i %in% c(1,2)) {
+        theme(
+          axis.text.y = element_text(size = 11, colour = "black"),
+          legend.text = element_text(size = 11, colour = "black"), 
+          legend.title = element_text(size = 12, colour = "black"), 
+          legend.spacing.y = unit(0.3, 'cm'),
+          legend.position="bottom",
+          axis.title.x  = element_text(size = 11, colour = "black"),
+          axis.title.y = element_blank())
+
+           } else {
+            
+            theme(
+              axis.title = element_blank(),
+              axis.text.y = element_text(size = 11, colour = "black"), 
+              legend.text = element_text(size = 11, colour = "black"), 
+              legend.title = element_text(size = 12, colour = "black"), 
+              legend.spacing.y = unit(0.3, 'cm'),
+              legend.position="bottom")
+            
+          }
+    
+    leg_1<- get_legend(actual_plot_list[[i]])
+    leg_2 <- get_legend(baseline_plot_list[[i]])
+    
+    
+    
+  price_plot_list[[i]] <- ggarrange(baseline_plot_list[[i]],NULL,actual_plot_list[[i]],
+                              #labels = c("A",NA, "B"), 
+                               heights = c(0.7,0,1),
+                               widths = c(1,0,0.1),
+                               ncol = 1,
+                               align = "v", 
+                               legend = "none") 
+    
+  }
+  
+
+leg<- plot_grid(leg_1, NULL,leg_2,
+                rel_heights = c(1,0.1,1),
+                ncol = 1, 
+                align = "v") 
+
+
+price_1<- ggarrange(price_plot_list[[1]],price_plot_list[[2]],price_plot_list[[3]],price_plot_list[[4]],price_plot_list[[5]],price_plot_list[[6]],price_plot_list[[7]],price_plot_list[[8]],
+          labels = c("A","B","C","D","E","F","G","H"),
+          nrow = 4, ncol = 2,
+          align = "h")
+
+
+price_2 <- plot_grid(price_1,leg,
+                rel_heights = c(1,0.1),
+                ncol = 1, 
+                align = "v") 
+
+price_2
+
+```
+
+**Figure 2 - Standing stock**
 
 Import and rearrange data
 
-```{r}
+```{r, warning = FALSE}
 stock <- data.table(rgdx.param("C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/data/merged.gdx","Forstock1"))
+
 colnames(stock) <- c("SSP","Scenario","Region", "Year","Value")
 stock$Scenario <- as.character(stock$Scenario)
+stock$Scenario <- ifelse(grepl("^[a-z]", stock$Scenario),
+                                      paste0("MC2_", stock$Scenario),
+                                      stock$Scenario)
+
 stock <- stock %>%
-  filter(Year %in% c("2020", "2050" ,"2070"))  %>%
-  separate(Scenario, into = c("DGVM", "GCM", "RCP"), sep = "_") #%>%
+  filter(Year %in% c("2020", "2050" ,"2070") & Region %in% c("Asia","Europe","Africa", "Oceania", "South America", "North America", "Central America" ))  %>%
+  separate(Scenario, into = c("DGVM", "GCM", "RCP"), sep = "_") 
+
+baseline <- stock %>% filter(GCM == "baseline" & Year == 2020)
+baseline <- subset(baseline, select = c("SSP", "Region", "Value"))
+
+stock <- left_join(stock, baseline, by = c("SSP", "Region"), suffix = c("", "_baseline"))
 
 ```
 
-Smmarize data
+Calculate Percentage **Question**: No-NPP baseline or just 2020? Not clear from Figure?
+
+```{r, message = FALSE}
+
+
+stock$percentage <- (stock$Value - stock$Value_baseline) / stock$Value_baseline * 100
+
+
+```
+
+Create the figure
 
 ```{r}
-stock$continent <- region_to_rcode[as.character(stock$Region)]
-
-stock <- stock %>% 
-  group_by(SSP, DGVM, GCM, RCP, continent, Year) %>% 
-  summarize(Sum = sum(Value, na.rm = TRUE))
-
-stock <- stock %>% 
-  pivot_wider(id_cols = c("SSP", "continent", "DGVM", "GCM", "RCP"),
-              names_from = Year,
-              values_from = Sum)
-
-stock$percentage_2050 <- (stock$'2050' - stock$'2020') / stock$'2020' * 100
-stock$percentage_2070 <- (stock$'2070' - stock$'2020') / stock$'2020' * 100
-
-
+Forstock_plot <- ggplot() + 
+  geom_bar(data = stock %>% filter(Year != 2020 & SSP == "SSP2" & RCP %in% c("rcp26", "rcp60", "rcp85")) %>% 
+                          group_by(Region, RCP, Year) %>% 
+                          summarise(mean_percentage = mean(percentage, na.rm = TRUE), 
+                                    SD_percentage = sd(percentage, na.rm = TRUE)), 
+           aes(x = Region, y = mean_percentage, fill = Year), 
+           stat = "identity", 
+           position = position_dodge2()) + 
+  geom_errorbar(data = stock %>% filter(Year != 2020 & SSP == "SSP2" & RCP %in% c("rcp26", "rcp60", "rcp85")) %>% 
+                          group_by(Region, RCP, Year) %>% 
+                          summarise(mean_percentage = mean(percentage, na.rm = TRUE), 
+                                    SD_percentage = sd(percentage, na.rm = TRUE)), 
+                aes(x = Region, ymin = mean_percentage - SD_percentage, 
+                    ymax = mean_percentage+ SD_percentage, fill = Year), 
+                position = position_dodge(0.8)) + 
+  geom_point(data = stock %>% filter(Year != 2020 & SSP == "SSP2" & RCP %in% c("rcp26", "rcp60", "rcp85")),
+                 aes(x=Region, y = percentage, colour = DGVM, group = factor(Year)), 
+                 shape = 95, size =4, alpha = 1, position = position_dodge(0.75))+
+  facet_grid(.~RCP) + 
+  theme_bw()
+  
+  
+  
 ```
 
 Question: Different values calculated than shown in Figure 2!!
 
-**Relative Quantity Variation by GDP**
+**Figure 3 - Relative Quantity Variation by GDP**
 
 ```{r}
 GDP <- read.csv("C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/data/GDPP_Rate.csv")
 
-#subset to 2050 
+harvest <- data.table(rgdx.param("C:/Users/maxto/Desktop/Hiwi-Arbeit/FOROM_paper/data/merged.gdx","Forest_Harvest"))
+
+#sort quantity data
+harvest <- harvest %>% 
+  filter(i5 == "2050") %>% 
+  filter(i3 == "T")
+colnames(harvest) <- c("SSP","Scenario", "Product","Region", "Year","Value")
+harvest$Scenario <- as.character(harvest$Scenario)
+harvest$Scenario <- ifelse(grepl("^[[:lower:]a-z]",harvest$Scenario),paste0("MC2_",harvest$Scenario),harvest$Scenario)
+  harvest <- harvest %>%
+  separate(Scenario, into = c("DGVM", "GCM", "RCP"), sep = "_") 
+harvest$Year <- as.character(harvest$Year)
+
+# Baseline creation 
+baseline_quantity_variation <- subset(harvest, GCM == "baseline")
+baseline_quantity_variation <- baseline_quantity_variation %>% 
+  subset(select = -c(Product, RCP))
+
+
+#subset GDP data to 2050 
 GDP <- GDP %>% 
   filter(Year == 2050) %>% 
   select(SSP, Region, Year, GDPP, Growth_rate) %>% 
   mutate(Year = as.character(Year))
 
-#combine this dataset with relative quantity variation
+GDP$Year <- as.character(GDP$Year)
 
+#combine quantity and GDP data
+harvest <- left_join(harvest , GDP %>% select(SSP, Region, Year, GDPP, Growth_rate), by = c("SSP", "Region", "Year"))
 
-baseline_quantity_variation <- subset(combined_data, GCM == "baseline" & Year == "2070" & Product == "IRC" & Region != "Rest of North America")
+#exclude continent 
+harvest <- harvest %>% 
+  filter(!Region %in% c("Europe","Africa","Asia","Oceania", "North America", "South America", "Central America", "WORLD", "ROW", "United States"))
 
-combined_data <- na.omit(combined_data)
-#summary(combined_data)
-combined_data <- combined_data %>% 
-  filter(Year == "2050") %>% 
-  mutate(Year = as.character(Year))
+#assign continent to Region
+harvest$continent <- region_to_rcode[as.character(harvest$Region)]
 
-combined_data <- left_join(combined_data , GDP %>% select(SSP, Region, Year, GDPP, Growth_rate), by = c("SSP", "Region", "Year"))
+#combine data with baseline
+try <- left_join(harvest, baseline_quantity_variation %>% select(-c(DGVM,GCM)), by = c("SSP", "Region", "Year")) %>% 
+  rename(value=Value.x, baseline=Value.y)
 
-combined_data <- combined_data %>% 
-  filter(Product == "IRC") 
-
-try <- left_join(combined_data, baseline_quantity_variation %>% select(-c(DGVM,GCM,RCP, continent)), by = c("SSP","Product", "Region", "Year")) %>% 
-  rename(Quantity=Quantity.x, Price=Price.x , Quantity_baseline=Quantity.y, Price_baseline=Price.y)
-
+#calculate relative quantity variation 
 try <- try %>% 
   group_by(SSP, Region, GDPP, Growth_rate, continent) %>% 
-  summarize(PriceDifference = max(Quantity) - min(Quantity),
-            PriceDifference_pct = 100* PriceDifference /mean(Quantity_baseline),
+  summarize(Difference = max(value) - min(value),
+            Difference_pct = 100*Difference /mean(baseline),
             .groups = 'drop')
   
 ```
 
-##Random Forest Analysis
+Create the figure!
 
-```{r}
-# library(randomForest)
-# library(datasets)
-# library(caret)
-# library(gbm)
-# 
-# set.seed(222)
-# 
-# ind <- sample(2, nrow(data), replace = TRUE, prob = c(0.7, 0.3))
-# train <- data[ind==1,]
-# test <- data[ind==2,]
-# 
-# 
-# ## Random forest analysis
-# rf <- randomForest(forest_stock~., data=train, proximity=TRUE)
-# 
-# 
-# 
-# ## Gradient Boosting model
-# model_gbm <- gbm(train$forest_stock ~.,
-#                 data = train,
-#                 distribution = "gaussian",
-#                 cv.folds = 10,
-#                 shrinkage = .01,
-#                 n.minobsinnode = 10,
-#                 n.trees = 500)
-# 
-# pred_y <- predict.gbm(model_gbm, test_x)
+```{r, warning=FALSE}
+custom_colors <- c("South America" = "#9ee9c4",
+                   "Oceania" = "black",
+                   "Europe" = "brown",
+                   "North America" = "#2a8082",
+                   "Asia" = "blue",
+                   "Africa" = "#e6ab02")
+
+custom_linetypes <- c("South America" = "solid",
+                      "Oceania" = "solid",
+                      "Europe" = "dashed",
+                      "North America" = "solid",
+                      "Asia" = "twodash",
+                      "Africa" = "solid")
+
+ggplot(try, aes(x = GDPP, y = Difference_pct)) +
+  #geom_point(color = "gray", alpha = 0.3) +
+  geom_smooth(aes(color = continent, linetype = continent), method = "lm", se = FALSE) +
+  geom_point(data = try, aes(color = continent), alpha = 0.3) +  # Add another geom_point for colored dots
+  facet_grid(~SSP) +
+  labs(title = "GDP Per Capita vs. Quantity variations by Region",
+       x = NULL,
+       y = "Quantity Differences %") +
+  scale_color_manual(values = custom_colors) +
+  scale_linetype_manual(values = custom_linetypes) +
+  coord_cartesian(ylim = c(0, 15)) +
+  theme_bw() +
+  annotate("segment", x = -Inf, xend = Inf, y = -Inf, yend = -Inf) +
+  annotate("segment", x = -Inf, xend = -Inf, y = -Inf, yend = Inf) +
+  theme(axis.text.x = element_text(size = 8),
+        legend.position = 'bottom',
+        legend.direction = "horizontal",
+        legend.box = "horizontal",
+        legend.key.size = unit(0.5, "cm"),
+        legend.key.width = unit(1.2, "cm"),
+        legend.text = element_text(size = 8),
+        legend.title = element_blank(),
+        legend.spacing.x = unit(0.2, "cm"))  # Remove legend for dots
+```
+
+## 3. Random Forest Analysis
+
+Doing RFA in Phython
+
+```{python}
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.preprocessing import StandardScaler
+from sklearn.inspection import permutation_importance
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
+
+# Read the data from the 'joined1.csv' file --> compiles data from FOROM output
+df = pd.read_csv('joined1.csv')
+
+# Get the unique Region values
+regions = df['Region'].unique()
+
+# Create a PDF file to save the barplots
+pdf_pages = PdfPages('feature_importance_barplots.pdf')
+
+# Create a DataFrame to store all feature importance results
+all_importances_df = pd.DataFrame()
+
+# Iterate over each Region and the combined data
+for region in list(regions) + ['Combined']:
+    if region == 'Combined':
+        # Separate features and target variable for combined data
+        X = df.drop(['Region', 'Value_Stock'], axis=1)
+        y = df['Value_Stock']
+    else:
+        # Filter the data for the current Region
+        region_data = df[df['Region'] == region]
+        
+        # Separate features and target variable
+        X = region_data.drop(['Region', 'Value_Stock'], axis=1)
+        y = region_data['Value_Stock']
+    
+    # Remove rows with NaN values
+    X.dropna(inplace=True)
+    y = y[X.index]
+    
+    # Scale the features
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    
+    # Random Forest
+    rf = RandomForestRegressor(n_estimators=100, random_state=42)
+    rf.fit(X_scaled, y)
+    
+    # Sort the feature importances in descending order
+    rf_importances = pd.Series(rf.feature_importances_, index=X.columns).sort_values(ascending=False)
+    
+    # Create a barplot for Random Forest feature importance
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(rf_importances.index, rf_importances.values)
+    ax.set_xlabel('Features')
+    ax.set_ylabel('Importance')
+    ax.set_title(f'Random Forest Feature Importance ({region})')
+    ax.tick_params(axis='x', rotation=45)
+    plt.tight_layout()
+    pdf_pages.savefig(fig)
+    
+    # Add Random Forest feature importances to the DataFrame
+    rf_importances_df = pd.DataFrame({'Feature': rf_importances.index, 'Importance': rf_importances.values})
+    rf_importances_df['Region'] = region
+    rf_importances_df['Model'] = 'Random Forest'
+    all_importances_df = pd.concat([all_importances_df, rf_importances_df], ignore_index=True)
+    
+    # Gradient Boosting Regressor
+    gbr = GradientBoostingRegressor(n_estimators=100, random_state=42)
+    gbr.fit(X_scaled, y)
+    
+    # Sort the feature importances in descending order
+    gbr_importances = pd.Series(gbr.feature_importances_, index=X.columns).sort_values(ascending=False)
+    
+    # Create a barplot for Gradient Boosting Regressor feature importance
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(gbr_importances.index, gbr_importances.values)
+    ax.set_xlabel('Features')
+    ax.set_ylabel('Importance')
+    ax.set_title(f'Gradient Boosting Regressor Feature Importance ({region})')
+    ax.tick_params(axis='x', rotation=45)
+    plt.tight_layout()
+    pdf_pages.savefig(fig)
+    
+    # Add Gradient Boosting Regressor feature importances to the DataFrame
+    gbr_importances_df = pd.DataFrame({'Feature': gbr_importances.index, 'Importance': gbr_importances.values})
+    gbr_importances_df['Region'] = region
+    gbr_importances_df['Model'] = 'Gradient Boosting'
+    all_importances_df = pd.concat([all_importances_df, gbr_importances_df], ignore_index=True)
+    
+    # Permutation Feature Importance
+    perm_importance = permutation_importance(rf, X_scaled, y, n_repeats=10, random_state=42)
+    
+    # Create a DataFrame with feature names and their permutation importances
+    perm_importance_df = pd.DataFrame({'Feature': X.columns, 'Importance': perm_importance.importances_mean})
+    perm_importance_df = perm_importance_df.sort_values('Importance', ascending=False)
+    
+    # Create a barplot for Permutation Feature Importance
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(perm_importance_df['Feature'], perm_importance_df['Importance'])
+    ax.set_xlabel('Features')
+    ax.set_ylabel('Permutation Importance')
+    ax.set_title(f'Permutation Feature Importance using Random Forest ({region})')
+    ax.tick_params(axis='x', rotation=45)
+    plt.tight_layout()
+    pdf_pages.savefig(fig)
+    
+    # Add Permutation Feature Importances to the DataFrame
+    perm_importance_df['Region'] = region
+    perm_importance_df['Model'] = 'Permutation'
+    all_importances_df = pd.concat([all_importances_df, perm_importance_df], ignore_index=True)
+
+# Close the PDF file
+pdf_pages.close()
+
+# Export all feature importances to a single CSV file
+all_importances_df.to_csv('all_feature_importances.csv', index=False)
+```
+
+creating the figure
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Read the CSV data
+data = pd.read_csv('all_feature_importances.csv')
+
+# Filter the data for "Gradient Boosting" model
+data = data[data['Model'] == 'Gradient Boosting']
+
+# Pivot the data to create a matrix suitable for heatmap
+pivot_data = data.pivot_table(index='Region', columns='Feature', values='Importance', aggfunc='mean')
+
+# Create a heatmap
+fig, ax = plt.subplots(figsize=(20, 30))  # Increased figure size to accommodate all regions
+sns_plot = sns.heatmap(pivot_data, cmap='YlGnBu', annot=True, fmt='.2f', cbar_kws={'label': 'Importance', 'shrink': 0.5}, annot_kws={"fontsize": 16})
+
+ax.set_xlabel('Region', fontsize=16)  # Switch X and Y, and increase font size
+ax.set_ylabel('Feature', fontsize=16)  # Switch X and Y, and increase font size
+ax.set_title('Factor Importance by Region (Gradient Boosting)', fontsize=28)
+
+plt.xticks(fontsize=20)  # Increase font size for x-tick labels
+plt.yticks(rotation=0, fontsize=20)  # Increase font size for y-tick labels and remove rotation
+
+cbar = ax.collections[0].colorbar
+cbar.ax.tick_params(labelsize=20)  # Increase font size for colorbar tick labels
+cbar.set_label(label='Importance', size=24)  # Increase font size for colorbar label
+
+plt.tight_layout()
+
+# Save the plot as a JPG file
+plt.savefig('heatmap.jpg', dpi=300, bbox_inches='tight')
 
 ```
